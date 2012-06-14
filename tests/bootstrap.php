@@ -1,3 +1,5 @@
+<?php
+
 if (!$loader = @include __DIR__.'/../vendor/.composer/autoload.php') {
     echo <<<EOM
 You must set up the project dependencies by running the following commands:

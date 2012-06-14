@@ -5,7 +5,6 @@ namespace Batch\Test\Retry\Policy;
 use Batch\Retry\Policy\TimeoutRetryPolicy;
 use Batch\Retry\RetryContext;
 
- */
 class TimeoutRetryPolicyTest extends \PHPUnit_Framework_TestCase
 {
     /**

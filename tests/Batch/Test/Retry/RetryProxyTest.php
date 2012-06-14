@@ -5,6 +5,7 @@ namespace Batch\Test\Retry;
 use Batch\Retry\RetryProxy;
 use Batch\Retry\Policy\SimpleRetryPolicy;
 use Batch\Retry\Policy\NeverRetryPolicy;
+use Batch\Retry\BackOff\NoBackOffPolicy;
 use Batch\Test\Retry\Fixtures\MockRetryClass;
 use Batch\Test\Retry\Fixtures\MockBackOffStrategy;
 
@@ -14,7 +15,7 @@ class RetryProxyTest extends \PHPUnit_Framework_TestCase
     {
         for ($x = 1; $x <= 10; $x++) {
             $action = new MockRetryClass($x);
-            $proxy = new RetryProxy(new SimpleRetryPolicy($x));
+            $proxy = new RetryProxy(new SimpleRetryPolicy($x), new NoBackOffPolicy());
             $proxy->call(array($action, 'action'));
             $this->assertEquals($x, $action->attempts);
         }
