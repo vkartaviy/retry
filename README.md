@@ -1,4 +1,4 @@
 Batch
 =====
 
-Library for repeatable and retryable operations
+The library for repeatable and retryable operations
