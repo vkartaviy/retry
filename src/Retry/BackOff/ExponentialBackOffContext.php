@@ -4,23 +4,27 @@ namespace Retry\BackOff;
 
 class ExponentialBackOffContext implements BackOffContextInterface
 {
-    private $interval;
+    private $seed;
     private $multiplier;
-    private $maxInterval;
+    private $max;
 
-    public function __construct($interval, $multiplier, $maxInterval)
+    private $interval;
+
+    public function __construct($seed, $multiplier, $max)
     {
-        $this->interval    = max(1, (int) $interval);
-        $this->multiplier  = max(1, (float) $multiplier);
-        $this->maxInterval = max(1, (int) $maxInterval);
+        $this->seed       = max(1, (int) $seed);
+        $this->multiplier = max(1, (float) $multiplier);
+        $this->max        = max(1, (int) $max);
+
+        $this->interval = $this->seed;
     }
 
     public function getIntervalAndIncrement()
     {
         $interval = $this->interval;
 
-        if ($interval > $this->maxInterval) {
-            $interval = $this->maxInterval;
+        if ($interval > $this->max) {
+            $interval = $this->max;
         } else {
             $this->interval = $this->getNextInterval();
         }
@@ -31,6 +35,11 @@ class ExponentialBackOffContext implements BackOffContextInterface
     public function getInterval()
     {
         return $this->interval;
+    }
+
+    public function resetInterval()
+    {
+        $this->interval = $this->seed;
     }
 
     public function getNextInterval()
