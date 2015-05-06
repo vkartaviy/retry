@@ -1,8 +1,8 @@
 {
-    "name": "vkartaviy/batch",
+    "name": "vkartaviy/retry",
     "description": "The library for repeatable and retryable operations",
     "keywords": ["proxy", "retry", "repeat", "backoff"],
-    "homepage": "https://github.com/vkartaviy/batch",
+    "homepage": "https://github.com/vkartaviy/retry",
     "license": "MIT",
     "authors": [
         {
@@ -12,9 +12,14 @@
         }
     ],
     "require": {
-        "php": ">=5.3.3"
+        "php": ">=5.4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "3.7.*"
     },
     "autoload": {
-        "psr-0": { "Batch": "src/" }
+        "psr-0": {
+            "Retry": "src"
+        }
     }
 }

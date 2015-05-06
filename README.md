@@ -3,7 +3,7 @@ Batch
 
 The library for repeatable and retryable operations.
 
-[![Build Status](https://secure.travis-ci.org/vkartaviy/batch.png?branch=master)](http://travis-ci.org/vkartaviy/batch)
+[![Build Status](https://secure.travis-ci.org/vkartaviy/retry.png?branch=master)](http://travis-ci.org/vkartaviy/retry)
 
 
 Here is a simple example:
@@ -11,9 +11,9 @@ Here is a simple example:
 ```php
 <?php
 
-use Batch\Retry\RetryProxy;
-use Batch\Retry\Policy\SimpleRetryPolicy;
-use Batch\Retry\BackOff\ExponentialBackOffPolicy;
+use Retry\RetryProxy;
+use Retry\Policy\SimpleRetryPolicy;
+use Retry\BackOff\ExponentialBackOffPolicy;
 
 $retryPolicy = new SimpleRetryPolicy(3);
 $backOffPolicy = new ExponentialBackOffPolicy();

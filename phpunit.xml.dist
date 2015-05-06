@@ -2,14 +2,14 @@
 
 <phpunit bootstrap="./tests/bootstrap.php" colors="true">
     <testsuites>
-        <testsuite name="Batch Test Suite">
-            <directory suffix="Test.php">./tests/Batch/Test/</directory>
+        <testsuite name="Retry Test Suite">
+            <directory suffix="Test.php">./tests/Retry/Test/</directory>
         </testsuite>
     </testsuites>
 
     <filter>
         <whitelist>
-            <directory suffix=".php">./src/Batch/</directory>
+            <directory suffix=".php">./src/Retry/</directory>
         </whitelist>
     </filter>
 </phpunit>

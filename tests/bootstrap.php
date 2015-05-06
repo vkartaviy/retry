@@ -12,4 +12,4 @@ EOM;
     exit(1);
 }
 
-$loader->add('Batch\Test', __DIR__);
+$loader->add('Retry\Test', __DIR__);
