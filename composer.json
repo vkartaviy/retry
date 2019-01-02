@@ -18,8 +18,13 @@
         "phpstan/phpstan": "^0.8"
     },
     "autoload": {
-        "psr-0": {
-            "Retry": "src"
+        "psr-4": {
+            "Retry\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Retry\\Tests\\": "tests"
         }
     },
     "scripts": {

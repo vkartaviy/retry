@@ -28,5 +28,5 @@ interface RetryPolicyInterface
      * @param \Exception $exception The thrown exception
      * @return void
      */
-    public function registerException(RetryContextInterface $context, \Throwable $exception): void;
+    public function registerException(RetryContextInterface $context, \Exception $exception): void;
 }

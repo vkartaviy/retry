@@ -55,7 +55,7 @@ class TimeoutRetryPolicy extends AbstractRetryPolicy
      */
     public function setTimeout(int $timeout): void
     {
-        $this->timeout = (int) $timeout;
+        $this->timeout = $timeout;
     }
 
     public function open(): RetryContextInterface
