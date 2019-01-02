@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Retry;
 
 /**
@@ -12,7 +14,7 @@ interface RetryContextInterface
      *
      * @return int
      */
-    function getRetryCount();
+    function getRetryCount(): int;
 
     /**
      * Set the exception for the public interface and increment retries counter.
@@ -23,12 +25,12 @@ interface RetryContextInterface
      * @param \Exception $exception The exception that caused the current retry attempt to fail.
      * @return void
      */
-    function registerException(\Exception $exception);
+    function registerException(\Exception $exception): void;
 
     /**
      * Accessor for the exception object that caused the current retry.
      *
      * @return \Exception The last exception that caused a retry, or possibly null.
      */
-    function getLastException();
+    function getLastException(): ?\Exception;
 }

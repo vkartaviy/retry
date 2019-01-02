@@ -1,11 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Retry\Test\BackOff\Fixtures;
 
 use Retry\BackOff\SleeperInterface;
 
 class DummySleeper implements SleeperInterface
 {
+    /** @var  array */
     private $backOffs;
 
     /**
@@ -13,17 +16,17 @@ class DummySleeper implements SleeperInterface
      *
      * @return int The last back-off value
      */
-    public function getLastBackOff()
+    public function getLastBackOff(): int
     {
         return end($this->backOffs);
     }
 
-    public function getBackOffs()
+    public function getBackOffs(): array
     {
         return $this->backOffs;
     }
 
-    public function sleep($backOffPeriod)
+    public function sleep($backOffPeriod): void
     {
         $this->backOffs[] = $backOffPeriod;
     }

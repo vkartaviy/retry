@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 if (!$loader = @include __DIR__.'/../vendor/autoload.php') {
     echo <<<EOM
 You must set up the project dependencies by running the following commands:

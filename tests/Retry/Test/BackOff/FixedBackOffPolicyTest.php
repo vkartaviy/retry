@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Retry\Test\BackOff;
 
 use Retry\BackOff\FixedBackOffPolicy;
@@ -17,20 +19,20 @@ class FixedBackOffPolicyTest extends \PHPUnit_Framework_TestCase
      */
     private $sleeper;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->policy  = new FixedBackOffPolicy();
         $this->sleeper = new DummySleeper();
         $this->policy->setSleeper($this->sleeper);
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         $this->policy  = null;
         $this->sleeper = null;
     }
 
-    public function testSetBackOffPeriodNegative()
+    public function testSetBackOffPeriodNegative(): void
     {
         $this->policy->setBackOffPeriod(-1000);
         $this->policy->backOff();
@@ -39,7 +41,7 @@ class FixedBackOffPolicyTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(1, $this->sleeper->getLastBackOff());
     }
 
-    public function testSingleBackOff()
+    public function testSingleBackOff(): void
     {
         $this->policy->setBackOffPeriod(50);
         $this->policy->backOff();
@@ -48,7 +50,7 @@ class FixedBackOffPolicyTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(50, $this->sleeper->getLastBackOff());
     }
 
-    public function testManyBackOffCalls()
+    public function testManyBackOffCalls(): void
     {
         $this->policy->setBackOffPeriod(50);
         $this->policy->start();

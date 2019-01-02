@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Retry\Test\Retry\BackOff;
 
 use Retry\BackOff\LinearBackOffPolicy;
@@ -17,20 +19,20 @@ class LinearBackOffPolicyTest extends \PHPUnit_Framework_TestCase
      */
     private $sleeper;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->policy  = new LinearBackOffPolicy();
         $this->sleeper = new DummySleeper();
         $this->policy->setSleeper($this->sleeper);
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         $this->policy  = null;
         $this->sleeper = null;
     }
 
-    public function testSingleBackOff()
+    public function testSingleBackOff(): void
     {
         $context = $this->policy->start();
         $this->policy->backOff($context);
@@ -38,7 +40,7 @@ class LinearBackOffPolicyTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(LinearBackOffPolicy::DEFAULT_INITIAL_INTERVAL, $this->sleeper->getLastBackOff());
     }
 
-    public function testMaximumBackOff()
+    public function testMaximumBackOff(): void
     {
         $this->policy->setMaxInterval(50);
 
@@ -48,7 +50,7 @@ class LinearBackOffPolicyTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(50, $this->sleeper->getLastBackOff());
     }
 
-    public function testMultiBackOff()
+    public function testMultiBackOff(): void
     {
         $seed  = 100;
         $delta = 10;

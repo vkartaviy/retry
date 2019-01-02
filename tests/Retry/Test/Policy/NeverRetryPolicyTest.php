@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Retry\Test\Policy;
 
 use Retry\Policy\NeverRetryPolicy;
@@ -11,24 +13,25 @@ class NeverRetryPolicyTest extends \PHPUnit_Framework_TestCase
      * @var NeverRetryPolicy
      */
     private $policy;
+
     /**
      * @var RetryContextInterface
      */
     private $context;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->policy = new NeverRetryPolicy();
         $this->context = $this->policy->open();
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         $this->policy = null;
         $this->context = null;
     }
 
-    public function testSimpleOperations()
+    public function testSimpleOperations(): void
     {
         // We can retry until the first exception is registered...
         $this->assertTrue($this->policy->canRetry($this->context));
@@ -37,7 +40,7 @@ class NeverRetryPolicyTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($this->policy->canRetry($this->context));
     }
 
-    public function testRetryCount()
+    public function testRetryCount(): void
     {
         $this->policy->registerException($this->context, new \RuntimeException('foo'));
         $this->assertEquals(1, $this->context->getRetryCount());

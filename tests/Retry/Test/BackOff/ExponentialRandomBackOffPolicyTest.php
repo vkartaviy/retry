@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Retry\Test\Retry\BackOff;
 
 use Retry\BackOff\BackOffContextInterface;
@@ -18,20 +20,20 @@ class ExponentialRandomBackOffPolicyTest extends \PHPUnit_Framework_TestCase
      */
     private $sleeper;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->policy  = new ExponentialRandomBackOffPolicy();
         $this->sleeper = new DummySleeper();
         $this->policy->setSleeper($this->sleeper);
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         $this->policy  = null;
         $this->sleeper = null;
     }
 
-    public function testSingleBackOff()
+    public function testSingleBackOff(): void
     {
         $seed = $this->policy->getInitialInterval();
         $multiplier = $this->policy->getMultiplier();
@@ -42,7 +44,7 @@ class ExponentialRandomBackOffPolicyTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($this->randomize($seed, $multiplier), $this->sleeper->getLastBackOff());
     }
 
-    public function testMaximumBackOff()
+    public function testMaximumBackOff(): void
     {
         $maxInterval = 50;
         $multiplier = $this->policy->getMultiplier();
@@ -55,7 +57,7 @@ class ExponentialRandomBackOffPolicyTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($this->randomize($maxInterval, $multiplier), $this->sleeper->getLastBackOff());
     }
 
-    public function testMultiBackOff()
+    public function testMultiBackOff(): void
     {
         $seed       = 40;
         $multiplier = 1.2;
@@ -73,13 +75,13 @@ class ExponentialRandomBackOffPolicyTest extends \PHPUnit_Framework_TestCase
         }
     }
 
-    private function backOff(BackOffContextInterface $context)
+    private function backOff(BackOffContextInterface $context): void
     {
         mt_srand(1);
         $this->policy->backOff($context);
     }
 
-    private function randomize($seed, $multiplier)
+    private function randomize(int $seed, float $multiplier): int
     {
         mt_srand(1);
         $random = mt_rand(0, mt_getrandmax()) / mt_getrandmax();

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Retry\BackOff;
 
 class ExponentialRandomBackOffContext extends ExponentialBackOffContext
