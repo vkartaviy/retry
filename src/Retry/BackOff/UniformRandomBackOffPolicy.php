@@ -46,7 +46,7 @@ class UniformRandomBackOffPolicy extends StatelessBackOffPolicy
      * @param int $minBackOffPeriod The minimum back off period in milliseconds.
      * @param int $maxBackOffPeriod The maximum back off period in milliseconds.
      */
-    public function __construct($minBackOffPeriod = null, $maxBackOffPeriod = null)
+    public function __construct(?int $minBackOffPeriod = null, ?int $maxBackOffPeriod = null)
     {
         if ($minBackOffPeriod === null) {
             $minBackOffPeriod = self::DEFAULT_BACK_OFF_MIN_PERIOD;
@@ -67,7 +67,7 @@ class UniformRandomBackOffPolicy extends StatelessBackOffPolicy
      *
      * @param int $backOffPeriod
      */
-    public function setMinBackOffPeriod($backOffPeriod)
+    public function setMinBackOffPeriod(int $backOffPeriod): void
     {
         $this->minBackOffPeriod = max(1, (int) $backOffPeriod);
     }
@@ -77,7 +77,7 @@ class UniformRandomBackOffPolicy extends StatelessBackOffPolicy
      *
      * @return int
      */
-    public function getMinBackOffPeriod()
+    public function getMinBackOffPeriod(): int
     {
         return $this->minBackOffPeriod;
     }
@@ -87,7 +87,7 @@ class UniformRandomBackOffPolicy extends StatelessBackOffPolicy
      *
      * @param int $backOffPeriod
      */
-    public function setMaxBackOffPeriod($backOffPeriod)
+    public function setMaxBackOffPeriod(int $backOffPeriod): void
     {
         $this->maxBackOffPeriod = max(1, (int) $backOffPeriod);
     }
@@ -97,23 +97,19 @@ class UniformRandomBackOffPolicy extends StatelessBackOffPolicy
      *
      * @return int
      */
-    public function getMaxBackOffPeriod()
+    public function getMaxBackOffPeriod(): int
     {
         return $this->maxBackOffPeriod;
     }
 
-    /**
-     * @param \Retry\BackOff\SleeperInterface $sleeper
-     * @return void
-     */
-    public function setSleeper(SleeperInterface $sleeper)
+    public function setSleeper(SleeperInterface $sleeper): void
     {
         $this->sleeper = $sleeper;
     }
 
-    protected function doBackOff()
+    protected function doBackOff(): void
     {
-        if ($this->maxBackOffPeriod == $this->minBackOffPeriod) {
+        if ($this->maxBackOffPeriod === $this->minBackOffPeriod) {
             $period = 0;
         } else {
             $period = mt_rand(0, $this->maxBackOffPeriod - $this->minBackOffPeriod);

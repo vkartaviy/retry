@@ -27,7 +27,7 @@ class FixedBackOffPolicy extends StatelessBackOffPolicy
     /**
      * @param int $backOffPeriod The back-off period in milliseconds. Cannot be &lt; 1. Default value is 1000 ms.
      */
-    public function __construct($backOffPeriod = null)
+    public function __construct(?int $backOffPeriod = null)
     {
         if ($backOffPeriod === null) {
             $backOffPeriod = self::DEFAULT_BACK_OFF_PERIOD;
@@ -43,7 +43,7 @@ class FixedBackOffPolicy extends StatelessBackOffPolicy
      *
      * @return int The back-off period
      */
-    public function getBackOffPeriod()
+    public function getBackOffPeriod(): int
     {
         return $this->backOffPeriod;
     }
@@ -54,7 +54,7 @@ class FixedBackOffPolicy extends StatelessBackOffPolicy
      * @param int $backOffPeriod
      * @return void
      */
-    public function setBackOffPeriod($backOffPeriod)
+    public function setBackOffPeriod(int $backOffPeriod): void
     {
         $this->backOffPeriod = max(1, (int) $backOffPeriod);
     }
@@ -65,12 +65,12 @@ class FixedBackOffPolicy extends StatelessBackOffPolicy
      * @param SleeperInterface $sleeper The sleeper to set. Defaults to {@link DefaultSleeper}.
      * @return void
      */
-    public function setSleeper(SleeperInterface $sleeper)
+    public function setSleeper(SleeperInterface $sleeper): void
     {
         $this->sleeper = $sleeper;
     }
 
-    protected function doBackOff()
+    protected function doBackOff(): void
     {
         $this->sleeper->sleep($this->backOffPeriod);
     }

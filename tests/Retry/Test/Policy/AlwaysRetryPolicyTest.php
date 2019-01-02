@@ -45,4 +45,3 @@ class AlwaysRetryPolicyTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('foo', $this->context->getLastException()->getMessage());
     }
 }
-

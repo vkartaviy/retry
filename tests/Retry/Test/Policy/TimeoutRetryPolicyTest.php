@@ -13,17 +13,17 @@ class TimeoutRetryPolicyTest extends \PHPUnit_Framework_TestCase
      */
     private $policy;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->policy = new TimeoutRetryPolicy();
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         $this->policy = null;
     }
 
-    public function testTimeoutPreventsRetry()
+    public function testTimeoutPreventsRetry(): void
     {
         $this->policy->setTimeout(100);
 
@@ -37,7 +37,7 @@ class TimeoutRetryPolicyTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($this->policy->canRetry($context));
     }
 
-    public function testRetryCount()
+    public function testRetryCount(): void
     {
         $context = $this->policy->open();
 
@@ -46,4 +46,3 @@ class TimeoutRetryPolicyTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('foo', $context->getLastException()->getMessage());
     }
 }
-

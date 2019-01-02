@@ -47,4 +47,3 @@ class NeverRetryPolicyTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('foo', $this->context->getLastException()->getMessage());
     }
 }
-

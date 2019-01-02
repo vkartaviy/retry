@@ -37,7 +37,7 @@ class SimpleRetryPolicy extends AbstractRetryPolicy
      * @param int        $maxAttempts The number of attempts before a retry becomes impossible.
      * @param array|null $retryableExceptions
      */
-    public function __construct($maxAttempts = null, array $retryableExceptions = null)
+    public function __construct(?int $maxAttempts = null, ?array $retryableExceptions = null)
     {
         if ($maxAttempts === null) {
             $maxAttempts = self::DEFAULT_MAX_ATTEMPTS;
@@ -55,7 +55,7 @@ class SimpleRetryPolicy extends AbstractRetryPolicy
      *
      * @return int The maximum number of attempts
      */
-    public function getMaxAttempts()
+    public function getMaxAttempts(): int
     {
         return $this->maxAttempts;
     }
@@ -66,7 +66,7 @@ class SimpleRetryPolicy extends AbstractRetryPolicy
      * @param int $maxAttempts The number of attempts before a retry becomes impossible.
      * @return void
      */
-    public function setMaxAttempts($maxAttempts)
+    public function setMaxAttempts(int $maxAttempts): void
     {
         $this->maxAttempts = (int) $maxAttempts;
     }
@@ -75,7 +75,7 @@ class SimpleRetryPolicy extends AbstractRetryPolicy
      * @param array $retryableExceptions
      * @return void
      */
-    public function setRetryableExceptions(array $retryableExceptions)
+    public function setRetryableExceptions(array $retryableExceptions): void
     {
         $this->retryableExceptions = $retryableExceptions;
     }
@@ -87,7 +87,7 @@ class SimpleRetryPolicy extends AbstractRetryPolicy
         return (!$e || $this->shouldRetryForException($e)) && $context->getRetryCount() < $this->maxAttempts;
     }
 
-    private function shouldRetryForException(\Exception $e)
+    private function shouldRetryForException(\Throwable $e)
     {
         foreach ($this->retryableExceptions as $class) {
             if (is_a($e, $class)) {

@@ -10,7 +10,7 @@ namespace Retry\BackOff;
  */
 class NoBackOffPolicy extends StatelessBackOffPolicy
 {
-    protected function doBackOff()
+    protected function doBackOff(): void
     {
     }
 }

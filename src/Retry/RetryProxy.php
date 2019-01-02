@@ -21,11 +21,7 @@ class RetryProxy implements RetryProxyInterface
      */
     private $backOffPolicy;
 
-    /**
-     * @param Policy\RetryPolicyInterface|null $retryPolicy
-     * @param BackOff\BackOffPolicyInterface|null $backOffPolicy
-     */
-    public function __construct(RetryPolicyInterface $retryPolicy = null, BackOffPolicyInterface $backOffPolicy = null)
+    public function __construct(?RetryPolicyInterface $retryPolicy = null, ?BackOffPolicyInterface $backOffPolicy = null)
     {
         if ($retryPolicy === null) {
             $retryPolicy = new SimpleRetryPolicy();
@@ -56,10 +52,10 @@ class RetryProxy implements RetryProxyInterface
         while ($this->retryPolicy->canRetry($retryContext)) {
             try {
                 return call_user_func_array($action, $arguments);
-            } catch (\Exception $thrownException) {
+            } catch (\Throwable $thrownException) {
                 try {
                     $this->retryPolicy->registerException($retryContext, $thrownException);
-                } catch (\Exception $policyException) {
+                } catch (\Throwable $policyException) {
                     throw new TerminatedRetryException('Terminated retry after error in policy.');
                 }
             }

@@ -13,13 +13,13 @@ interface RetryPolicyInterface
      *
      * @return RetryContextInterface
      */
-    function open();
+    function open(): RetryContextInterface;
 
     /**
      * @param RetryContextInterface $context The current status object
      * @return boolean Returns TRUE if the operation can proceed
      */
-    function canRetry(RetryContextInterface $context);
+    function canRetry(RetryContextInterface $context): bool;
 
     /**
      * Called once per retry attempt, after the callback fails.
@@ -28,5 +28,5 @@ interface RetryPolicyInterface
      * @param \Exception $exception The thrown exception
      * @return void
      */
-    function registerException(RetryContextInterface $context, \Exception $exception);
+    function registerException(RetryContextInterface $context, \Throwable $exception): void;
 }

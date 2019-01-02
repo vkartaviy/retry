@@ -11,5 +11,5 @@ interface SleeperInterface
      *
      * @param int $period
      */
-    function sleep($period);
+    function sleep(int $period): void;
 }

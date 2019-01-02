@@ -39,7 +39,7 @@ class LinearBackOffContext implements BackOffContextInterface
         return $this->interval;
     }
 
-    public function resetInterval()
+    public function resetInterval(): void
     {
         $this->interval = $this->seed;
     }

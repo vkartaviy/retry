@@ -11,7 +11,7 @@ class DefaultSleeper implements SleeperInterface
      *
      * @param int $period
      */
-    public function sleep($period)
+    public function sleep(int $period): void
     {
         usleep($period * 1000);
     }

@@ -63,7 +63,7 @@ class UniformRandomBackOffPolicyTest extends \PHPUnit_Framework_TestCase
     {
         mt_srand(1);
 
-        if ($min == $max) {
+        if ($min === $max) {
             return $min;
         }
 

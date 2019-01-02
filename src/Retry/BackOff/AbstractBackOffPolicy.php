@@ -11,7 +11,7 @@ abstract class AbstractBackOffPolicy implements BackOffPolicyInterface
     /**
      * @inheritdoc
      */
-    public function start(RetryContextInterface $context = null)
+    public function start(?RetryContextInterface $context = null)
     {
     }
 }

@@ -15,10 +15,10 @@ abstract class StatelessBackOffPolicy extends AbstractBackOffPolicy
      *
      * @param BackOffContextInterface $context
      */
-    public function backOff(BackOffContextInterface $context = null)
+    public function backOff(?BackOffContextInterface $context = null): void
     {
         $this->doBackOff();
     }
 
-    protected abstract function doBackOff();
+    abstract protected function doBackOff(): void;
 }

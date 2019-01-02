@@ -89,4 +89,3 @@ class ExponentialRandomBackOffPolicyTest extends \PHPUnit_Framework_TestCase
         return $seed * (1 + $random * ($multiplier - 1));
     }
 }
-

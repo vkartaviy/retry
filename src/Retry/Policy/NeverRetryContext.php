@@ -15,16 +15,12 @@ class NeverRetryContext extends RetryContext
         return $this->finished;
     }
 
-    public function setFinished()
+    public function setFinished(): void
     {
         $this->finished = true;
     }
 
-    /**
-     * @param RetryContextInterface $context
-     * @return NeverRetryContext
-     */
-    public static function cast(RetryContextInterface $context)
+    public static function cast(RetryContextInterface $context): NeverRetryContext
     {
         if (!$context instanceof NeverRetryContext) {
             throw new \InvalidArgumentException('Context is expected to be an instanceof NeverRetryContext.');

@@ -15,7 +15,7 @@ class MockRetryClass
     /** @var  \Exception */
     public $exceptionToThrow;
 
-    public function __construct(int $attemptsBeforeSuccess, \Exception $exceptionToThrow = null)
+    public function __construct(int $attemptsBeforeSuccess, ?\Throwable $exceptionToThrow = null)
     {
         $this->attemptsBeforeSuccess = $attemptsBeforeSuccess;
         $this->exceptionToThrow = $exceptionToThrow;

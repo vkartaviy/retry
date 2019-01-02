@@ -27,7 +27,7 @@ interface BackOffPolicyInterface
      *                                       that we can use to decide how to proceed.
      * @return null|BackOffContextInterface
      */
-    function start(RetryContextInterface $context = null);
+    function start(?RetryContextInterface $context = null): ?BackOffContextInterface;
 
     /**
      * Back-off/pause in an implementation-specific fashion. The passed in
@@ -37,5 +37,5 @@ interface BackOffPolicyInterface
      * @param BackOffContextInterface $context
      * @return void
      */
-    function backOff(BackOffContextInterface $context = null);
+    function backOff(?BackOffContextInterface $context = null): void;
 }

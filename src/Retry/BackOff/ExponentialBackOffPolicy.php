@@ -68,7 +68,7 @@ class ExponentialBackOffPolicy extends AbstractBackOffPolicy
      *                             The value will be reset to 1 if this method is called with a value less than 1.
      *                             Set this to avoid infinite waits if backing-off a large number of times (or if the multiplier is set too high).
      */
-    public function __construct($initialInterval = null, $multiplier = null, $maxInterval = null)
+    public function __construct(?int $initialInterval = null, ?float $multiplier = null, ?int $maxInterval = null)
     {
         if ($initialInterval === null) {
             $initialInterval = self::DEFAULT_INITIAL_INTERVAL;
@@ -94,7 +94,7 @@ class ExponentialBackOffPolicy extends AbstractBackOffPolicy
      *
      * @return int The initial interval
      */
-    public function getInitialInterval()
+    public function getInitialInterval(): int
     {
         return $this->initialInterval;
     }
@@ -106,7 +106,7 @@ class ExponentialBackOffPolicy extends AbstractBackOffPolicy
      * @param int $initialInterval
      * @return void
      */
-    public function setInitialInterval($initialInterval)
+    public function setInitialInterval(int $initialInterval): void
     {
         $this->initialInterval = max(1, (int) $initialInterval);
     }
@@ -116,7 +116,7 @@ class ExponentialBackOffPolicy extends AbstractBackOffPolicy
      *
      * @return float The multiplier in use
      */
-    public function getMultiplier()
+    public function getMultiplier(): float
     {
         return $this->multiplier;
     }
@@ -129,7 +129,7 @@ class ExponentialBackOffPolicy extends AbstractBackOffPolicy
      * @param float $multiplier
      * @return void
      */
-    public function setMultiplier($multiplier)
+    public function setMultiplier(float $multiplier): void
     {
         $this->multiplier = max(1, (float) $multiplier);
     }
@@ -139,7 +139,7 @@ class ExponentialBackOffPolicy extends AbstractBackOffPolicy
      *
      * @return int The maximum interval.
      */
-    public function getMaxInterval()
+    public function getMaxInterval(): int
     {
         return $this->maxInterval;
     }
@@ -152,21 +152,17 @@ class ExponentialBackOffPolicy extends AbstractBackOffPolicy
      * @param int $maxInterval
      * @return void
      */
-    public function setMaxInterval($maxInterval)
+    public function setMaxInterval(int $maxInterval): void
     {
         $this->maxInterval = max(1, (int) $maxInterval);
     }
 
-    /**
-     * @param \Retry\BackOff\SleeperInterface $sleeper
-     * @return void
-     */
-    public function setSleeper(SleeperInterface $sleeper)
+    public function setSleeper(SleeperInterface $sleeper): void
     {
         $this->sleeper = $sleeper;
     }
 
-    public function start(RetryContextInterface $context = null)
+    public function start(?RetryContextInterface $context = null)
     {
         return new ExponentialBackOffContext($this->initialInterval, $this->multiplier, $this->maxInterval);
     }
@@ -174,7 +170,7 @@ class ExponentialBackOffPolicy extends AbstractBackOffPolicy
     /**
      * @param BackOffContextInterface|ExponentialBackOffContext $context
      */
-    public function backOff(BackOffContextInterface $context = null)
+    public function backOff(?BackOffContextInterface $context = null): void
     {
         if (!$context instanceof ExponentialBackOffContext) {
             throw new \InvalidArgumentException('Context is expected to be an instanceof ExponentialBackOffContext.');

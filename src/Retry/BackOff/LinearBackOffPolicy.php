@@ -66,7 +66,7 @@ class LinearBackOffPolicy extends AbstractBackOffPolicy
      *                             The value will be reset to 1 if this method is called with a value less than 1.
      *                             Set this to avoid infinite waits if backing-off a large number of times.
      */
-    public function __construct($initialInterval = null, $deltaInterval = null, $maxInterval = null)
+    public function __construct(?int $initialInterval = null, ?float $deltaInterval = null, ?int $maxInterval = null)
     {
         if ($initialInterval === null) {
             $initialInterval = self::DEFAULT_INITIAL_INTERVAL;
@@ -92,7 +92,7 @@ class LinearBackOffPolicy extends AbstractBackOffPolicy
      *
      * @return int The initial interval
      */
-    public function getInitialInterval()
+    public function getInitialInterval(): int
     {
         return $this->initialInterval;
     }
@@ -104,7 +104,7 @@ class LinearBackOffPolicy extends AbstractBackOffPolicy
      * @param int $initialInterval
      * @return void
      */
-    public function setInitialInterval($initialInterval)
+    public function setInitialInterval(int $initialInterval): void
     {
         $this->initialInterval = max(1, (int) $initialInterval);
     }
@@ -114,7 +114,7 @@ class LinearBackOffPolicy extends AbstractBackOffPolicy
      *
      * @return int The delta in use
      */
-    public function getDeltaInterval()
+    public function getDeltaInterval(): int
     {
         return $this->deltaInterval;
     }
@@ -125,7 +125,7 @@ class LinearBackOffPolicy extends AbstractBackOffPolicy
      * @param float $delta
      * @return void
      */
-    public function setDeltaInterval($delta)
+    public function setDeltaInterval(float $delta): void
     {
         $this->deltaInterval = max(1, (int) $delta);
     }
@@ -135,7 +135,7 @@ class LinearBackOffPolicy extends AbstractBackOffPolicy
      *
      * @return int The maximum interval.
      */
-    public function getMaxInterval()
+    public function getMaxInterval(): int
     {
         return $this->maxInterval;
     }
@@ -148,21 +148,17 @@ class LinearBackOffPolicy extends AbstractBackOffPolicy
      * @param int $maxInterval
      * @return void
      */
-    public function setMaxInterval($maxInterval)
+    public function setMaxInterval(int $maxInterval): void
     {
         $this->maxInterval = max(1, (int) $maxInterval);
     }
 
-    /**
-     * @param \Retry\BackOff\SleeperInterface $sleeper
-     * @return void
-     */
-    public function setSleeper(SleeperInterface $sleeper)
+    public function setSleeper(SleeperInterface $sleeper): void
     {
         $this->sleeper = $sleeper;
     }
 
-    public function start(RetryContextInterface $context = null)
+    public function start(?RetryContextInterface $context = null)
     {
         return new LinearBackOffContext($this->initialInterval, $this->deltaInterval, $this->maxInterval);
     }
@@ -170,7 +166,7 @@ class LinearBackOffPolicy extends AbstractBackOffPolicy
     /**
      * @param BackOffContextInterface|LinearBackOffContext $context
      */
-    public function backOff(BackOffContextInterface $context = null)
+    public function backOff(?BackOffContextInterface $context = null): void
     {
         if (!$context instanceof LinearBackOffContext) {
             throw new \InvalidArgumentException('Context is expected to be an instanceof LinearBackOffContext.');

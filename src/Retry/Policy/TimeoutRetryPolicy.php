@@ -28,7 +28,7 @@ class TimeoutRetryPolicy extends AbstractRetryPolicy
     /**
      * @param int $timeout The timeout in milliseconds. Default is 1000 ms.
      */
-    public function __construct($timeout = null)
+    public function __construct(?int $timeout = null)
     {
         if ($timeout === null) {
             $timeout = self::DEFAULT_TIMEOUT;
@@ -42,7 +42,7 @@ class TimeoutRetryPolicy extends AbstractRetryPolicy
      *
      * @return int The timeout in milliseconds
      */
-    public function getTimeout()
+    public function getTimeout(): int
     {
         return $this->timeout;
     }
@@ -53,7 +53,7 @@ class TimeoutRetryPolicy extends AbstractRetryPolicy
      * @param timeout
      * @return void
      */
-    public function setTimeout($timeout)
+    public function setTimeout(timeout $timeout): void
     {
         $this->timeout = (int) $timeout;
     }

@@ -13,7 +13,7 @@ use Retry\Test\Fixtures\MockBackOffStrategy;
 
 class RetryProxyTest extends \PHPUnit_Framework_TestCase
 {
-    public function testSuccessfulRetry()
+    public function testSuccessfulRetry(): void
     {
         for ($x = 1; $x <= 10; $x++) {
             $action = new MockRetryClass($x);
@@ -23,7 +23,7 @@ class RetryProxyTest extends \PHPUnit_Framework_TestCase
         }
     }
 
-    public function testAlwaysTryAtLeastOnce()
+    public function testAlwaysTryAtLeastOnce(): void
     {
         $action = new MockRetryClass(1);
         $proxy = new RetryProxy(new NeverRetryPolicy());
@@ -31,7 +31,7 @@ class RetryProxyTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(1, $action->attempts);
     }
 
-    public function testNoSuccessRetry()
+    public function testNoSuccessRetry(): void
     {
         $action = new MockRetryClass(PHP_INT_MAX, new \InvalidArgumentException());
         $proxy = new RetryProxy(new SimpleRetryPolicy(2));
@@ -45,13 +45,13 @@ class RetryProxyTest extends \PHPUnit_Framework_TestCase
         $this->fail('Expected InvalidArgumentException.');
     }
 
-    public function testSetExceptions()
+    public function testSetExceptions(): void
     {
         $action = new MockRetryClass(3);
         $proxy = new RetryProxy(new SimpleRetryPolicy(3, array('RuntimeException')));
         try {
             $proxy->call(array($action, 'action'));
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             $this->assertEquals(1, $action->attempts);
         }
         $action->exceptionToThrow = new \RuntimeException();
@@ -59,7 +59,7 @@ class RetryProxyTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(3, $action->attempts);
     }
 
-    public function testBackOffInvoked()
+    public function testBackOffInvoked(): void
     {
         for ($x = 1; $x <= 10; $x++) {
             $action = new MockRetryClass($x);
@@ -72,11 +72,11 @@ class RetryProxyTest extends \PHPUnit_Framework_TestCase
         }
     }
 
-    public function testRethrowError()
+    public function testRethrowError(): void
     {
         $proxy = new RetryProxy(new NeverRetryPolicy());
         try {
-            $proxy->call(function(){
+            $proxy->call(function (): void {
                 throw new \ErrorException('Realllly bad!');
             });
             $this->fail('Expected Error');

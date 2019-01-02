@@ -16,12 +16,12 @@ class MockBackOffStrategy implements BackOffPolicyInterface
     /** @var  int */
     public $initCalls;
 
-    public function start(RetryContextInterface $context = null): void
+    public function start(?RetryContextInterface $context = null): void
     {
         $this->initCalls++;
     }
 
-    public function backOff(BackOffContextInterface $context = null): void
+    public function backOff(?BackOffContextInterface $context = null): void
     {
         $this->backOffCalls++;
     }

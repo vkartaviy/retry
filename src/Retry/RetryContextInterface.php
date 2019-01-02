@@ -25,12 +25,12 @@ interface RetryContextInterface
      * @param \Exception $exception The exception that caused the current retry attempt to fail.
      * @return void
      */
-    function registerException(\Exception $exception): void;
+    function registerException(\Throwable $exception): void;
 
     /**
      * Accessor for the exception object that caused the current retry.
      *
      * @return \Exception The last exception that caused a retry, or possibly null.
      */
-    function getLastException(): ?\Exception;
+    function getLastException(): ?\Throwable;
 }

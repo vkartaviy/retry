@@ -22,11 +22,7 @@ class TimeoutRetryContext extends RetryContext
         return (microtime(true) - $this->start) * 1000 <= $this->timeout;
     }
 
-    /**
-     * @param RetryContextInterface $context
-     * @return TimeoutRetryContext
-     */
-    public static function cast(RetryContextInterface $context)
+    public static function cast(RetryContextInterface $context): TimeoutRetryContext
     {
         if (!$context instanceof TimeoutRetryContext) {
             throw new \InvalidArgumentException('Context is expected to be an instanceof TimeoutRetryContext.');
