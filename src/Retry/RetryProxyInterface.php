@@ -6,5 +6,10 @@ namespace Retry;
 
 interface RetryProxyInterface
 {
-    public function call(callable $action, array $arguments = []): mixed;
+    /**
+     * @param callable $action
+     * @param array $arguments
+     * @return mixed
+     */
+    public function call(callable $action, array $arguments = []);
 }
