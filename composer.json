@@ -19,12 +19,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Retry\\": "src"
+            "Retry\\": "src/Retry/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Retry\\Tests\\": "tests"
+            "Retry\\Test\\": "tests/Retry/Test/"
         }
     },
     "scripts": {
