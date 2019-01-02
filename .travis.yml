@@ -1,12 +1,7 @@
-language: php
+language: bash
 
-php:
-    - 5.4
-    - 5.5
-    - 5.6
+services:
+  - docker
 
-before_script:
-    - wget http://getcomposer.org/composer.phar
-    - php composer.phar install --dev
-
-script: phpunit --coverage-text
+script:
+  - docker-compose run --rm tests

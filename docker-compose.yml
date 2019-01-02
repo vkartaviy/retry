@@ -1,0 +1,8 @@
+version: "2"
+services:
+  tests:
+    build: .
+    image: keboola/retry
+    volumes:
+      - .:/code
+    command: sh -c 'composer install -n && composer ci'
