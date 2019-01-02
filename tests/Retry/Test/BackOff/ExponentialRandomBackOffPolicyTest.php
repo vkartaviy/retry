@@ -76,7 +76,7 @@ class ExponentialRandomBackOffPolicyTest extends TestCase
         $this->policy->backOff($context);
     }
 
-    private function randomize(int $seed, float $multiplier): int
+    private function randomize(int $seed, float $multiplier): float
     {
         mt_srand(1);
         $random = mt_rand(0, mt_getrandmax()) / mt_getrandmax();

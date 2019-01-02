@@ -14,9 +14,9 @@ class DummySleeper implements SleeperInterface
     /**
      * Public getter for the last back-off value.
      *
-     * @return int The last back-off value
+     * @return float The last back-off value
      */
-    public function getLastBackOff(): int
+    public function getLastBackOff(): float
     {
         return end($this->backOffs);
     }

@@ -38,7 +38,7 @@ class RetryContext implements RetryContextInterface
     /**
      * @inheritdoc
      */
-    public function getLastException(): \Throwable
+    public function getLastException(): ?\Throwable
     {
         return $this->lastException;
     }

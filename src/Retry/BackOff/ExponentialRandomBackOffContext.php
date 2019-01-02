@@ -14,6 +14,6 @@ class ExponentialRandomBackOffContext extends ExponentialBackOffContext
         $interval = parent::getIntervalAndIncrement();
         $interval = $interval * (1 + $random * ($multiplier - 1));
 
-        return $interval;
+        return (int) $interval;
     }
 }
