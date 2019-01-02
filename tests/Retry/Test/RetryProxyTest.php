@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Test\Retry;
+namespace Retry\Test;
 
+use PHPUnit\Framework\TestCase;
 use Retry\RetryProxy;
 use Retry\Policy\SimpleRetryPolicy;
 use Retry\Policy\NeverRetryPolicy;
@@ -11,7 +12,7 @@ use Retry\BackOff\NoBackOffPolicy;
 use Retry\Test\Fixtures\MockRetryClass;
 use Retry\Test\Fixtures\MockBackOffStrategy;
 
-class RetryProxyTest extends \PHPUnit_Framework_TestCase
+class RetryProxyTest extends TestCase
 {
     public function testSuccessfulRetry(): void
     {

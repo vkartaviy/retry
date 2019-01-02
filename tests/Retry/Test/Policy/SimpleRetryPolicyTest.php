@@ -4,18 +4,19 @@ declare(strict_types=1);
 
 namespace Retry\Test\Policy;
 
+use PHPUnit\Framework\TestCase;
 use Retry\Policy\SimpleRetryPolicy;
 use Retry\RetryContextInterface;
 
-class SimpleRetryPolicyTest extends \PHPUnit_Framework_TestCase
+class SimpleRetryPolicyTest extends TestCase
 {
     /**
-     * @var SimpleRetryPolicy
+     * @var SimpleRetryPolicy|null
      */
     private $policy;
 
     /**
-     * @var RetryContextInterface
+     * @var RetryContextInterface|null
      */
     private $context;
 

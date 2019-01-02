@@ -12,7 +12,7 @@ class MockRetryClass
     /** @var  int */
     public $attemptsBeforeSuccess;
 
-    /** @var  \Exception */
+    /** @var  \Throwable */
     public $exceptionToThrow;
 
     public function __construct(int $attemptsBeforeSuccess, ?\Throwable $exceptionToThrow = null)

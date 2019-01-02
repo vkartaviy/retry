@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 namespace Retry\Test\Retry\BackOff;
 
+use PHPUnit\Framework\TestCase;
 use Retry\BackOff\UniformRandomBackOffPolicy;
 use Retry\Test\BackOff\Fixtures\DummySleeper;
 
-class UniformRandomBackOffPolicyTest extends \PHPUnit_Framework_TestCase
+class UniformRandomBackOffPolicyTest extends TestCase
 {
     /**
      * @var UniformRandomBackOffPolicy

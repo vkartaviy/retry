@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 namespace Retry\Test\Retry\BackOff;
 
+use PHPUnit\Framework\TestCase;
 use Retry\BackOff\BackOffContextInterface;
 use Retry\BackOff\ExponentialRandomBackOffPolicy;
 use Retry\Test\BackOff\Fixtures\DummySleeper;
 
-class ExponentialRandomBackOffPolicyTest extends \PHPUnit_Framework_TestCase
+class ExponentialRandomBackOffPolicyTest extends TestCase
 {
     /**
      * @var ExponentialRandomBackOffPolicy

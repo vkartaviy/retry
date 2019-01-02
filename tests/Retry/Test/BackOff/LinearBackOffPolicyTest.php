@@ -2,12 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Retry\Test\Retry\BackOff;
+namespace Retry\Test\BackOff;
 
+use PHPUnit\Framework\TestCase;
 use Retry\BackOff\LinearBackOffPolicy;
 use Retry\Test\BackOff\Fixtures\DummySleeper;
 
-class LinearBackOffPolicyTest extends \PHPUnit_Framework_TestCase
+class LinearBackOffPolicyTest extends TestCase
 {
     /**
      * @var LinearBackOffPolicy

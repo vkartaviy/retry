@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 namespace Retry\Test\BackOff;
 
+use PHPUnit\Framework\TestCase;
 use Retry\BackOff\FixedBackOffPolicy;
 use Retry\Test\BackOff\Fixtures\DummySleeper;
 
-class FixedBackOffPolicyTest extends \PHPUnit_Framework_TestCase
+class FixedBackOffPolicyTest extends TestCase
 {
     /**
      * @var FixedBackOffPolicy

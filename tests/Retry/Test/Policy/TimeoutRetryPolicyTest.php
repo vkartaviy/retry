@@ -4,12 +4,13 @@ declare(strict_types=1);
 
 namespace Retry\Test\Policy;
 
+use PHPUnit\Framework\TestCase;
 use Retry\Policy\TimeoutRetryPolicy;
 
-class TimeoutRetryPolicyTest extends \PHPUnit_Framework_TestCase
+class TimeoutRetryPolicyTest extends TestCase
 {
     /**
-     * @var TimeoutRetryPolicy
+     * @var TimeoutRetryPolicy|null
      */
     private $policy;
 
@@ -43,6 +44,8 @@ class TimeoutRetryPolicyTest extends \PHPUnit_Framework_TestCase
 
         $this->policy->registerException($context, new \RuntimeException('foo'));
         $this->assertEquals(1, $context->getRetryCount());
-        $this->assertEquals('foo', $context->getLastException()->getMessage());
+        $lastException = $context->getLastException();
+        $this->assertNotNull($lastException);
+        $this->assertEquals('foo', $lastException->getMessage());
     }
 }

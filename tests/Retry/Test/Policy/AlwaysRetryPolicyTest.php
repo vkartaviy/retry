@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 namespace Retry\Test\Policy;
 
+use PHPUnit\Framework\TestCase;
 use Retry\Policy\AlwaysRetryPolicy;
 use Retry\RetryContextInterface;
 
-class AlwaysRetryPolicyTest extends \PHPUnit_Framework_TestCase
+class AlwaysRetryPolicyTest extends TestCase
 {
     /**
      * @var AlwaysRetryPolicy
