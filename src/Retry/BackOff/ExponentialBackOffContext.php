@@ -52,7 +52,7 @@ class ExponentialBackOffContext implements BackOffContextInterface
 
     public function getNextInterval(): int
     {
-        return (int) $this->interval * $this->multiplier;
+        return (int) ($this->interval * $this->multiplier);
     }
 
     public function getMultiplier(): float
