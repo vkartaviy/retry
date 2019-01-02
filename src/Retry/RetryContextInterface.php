@@ -22,15 +22,15 @@ interface RetryContextInterface
      * All {@link RetryPolicyInterface} implementations should use this method when they register the exception.
      * It should only be called once per retry attempt because it increments a counter.
      *
-     * @param \Exception $exception The exception that caused the current retry attempt to fail.
+     * @param \Throwable $exception The exception that caused the current retry attempt to fail.
      * @return void
      */
-    public function registerException(\Exception $exception): void;
+    public function registerException(\Throwable $exception): void;
 
     /**
      * Accessor for the exception object that caused the current retry.
      *
-     * @return \Exception The last exception that caused a retry, or possibly null.
+     * @return \Throwable The last exception that caused a retry, or possibly null.
      */
     public function getLastException(): ?\Throwable;
 }

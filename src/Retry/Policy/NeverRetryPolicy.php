@@ -24,7 +24,7 @@ class NeverRetryPolicy extends AbstractRetryPolicy
         return !$context->isFinished();
     }
 
-    public function registerException(RetryContextInterface $context, \Exception $exception): void
+    public function registerException(RetryContextInterface $context, \Throwable $exception): void
     {
         $context = NeverRetryContext::cast($context);
         $context->setFinished();

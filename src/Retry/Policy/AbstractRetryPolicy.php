@@ -19,7 +19,7 @@ abstract class AbstractRetryPolicy implements RetryPolicyInterface
     /**
      * @inheritdoc
      */
-    public function registerException(RetryContextInterface $context, \Exception $exception): void
+    public function registerException(RetryContextInterface $context, \Throwable $exception): void
     {
         $context->registerException($exception);
     }
