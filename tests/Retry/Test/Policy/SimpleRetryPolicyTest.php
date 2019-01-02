@@ -11,12 +11,12 @@ use Retry\RetryContextInterface;
 class SimpleRetryPolicyTest extends TestCase
 {
     /**
-     * @var SimpleRetryPolicy|null
+     * @var SimpleRetryPolicy
      */
     private $policy;
 
     /**
-     * @var RetryContextInterface|null
+     * @var RetryContextInterface
      */
     private $context;
 
@@ -24,12 +24,6 @@ class SimpleRetryPolicyTest extends TestCase
     {
         $this->policy = new SimpleRetryPolicy();
         $this->context = $this->policy->open();
-    }
-
-    protected function tearDown(): void
-    {
-        $this->policy = null;
-        $this->context = null;
     }
 
     public function testCanRetryIfNoException(): void

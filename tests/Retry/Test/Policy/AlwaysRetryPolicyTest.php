@@ -26,12 +26,6 @@ class AlwaysRetryPolicyTest extends TestCase
         $this->context = $this->policy->open();
     }
 
-    protected function tearDown(): void
-    {
-        $this->policy = null;
-        $this->context = null;
-    }
-
     public function testSimpleOperations(): void
     {
         $this->assertTrue($this->policy->canRetry($this->context));
@@ -43,6 +37,9 @@ class AlwaysRetryPolicyTest extends TestCase
     {
         $this->policy->registerException($this->context, new \RuntimeException('foo'));
         $this->assertEquals(1, $this->context->getRetryCount());
-        $this->assertEquals('foo', $this->context->getLastException()->getMessage());
+        $lastException = $this->context->getLastException();
+        $this->assertNotNull($lastException);
+        $message = $lastException->getMessage();
+        $this->assertEquals('foo', $message);
     }
 }

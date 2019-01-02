@@ -10,18 +10,13 @@ use Retry\Policy\TimeoutRetryPolicy;
 class TimeoutRetryPolicyTest extends TestCase
 {
     /**
-     * @var TimeoutRetryPolicy|null
+     * @var TimeoutRetryPolicy
      */
     private $policy;
 
     protected function setUp(): void
     {
         $this->policy = new TimeoutRetryPolicy();
-    }
-
-    protected function tearDown(): void
-    {
-        $this->policy = null;
     }
 
     public function testTimeoutPreventsRetry(): void

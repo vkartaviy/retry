@@ -27,12 +27,6 @@ class FixedBackOffPolicyTest extends TestCase
         $this->policy->setSleeper($this->sleeper);
     }
 
-    protected function tearDown(): void
-    {
-        $this->policy  = null;
-        $this->sleeper = null;
-    }
-
     public function testSetBackOffPeriodNegative(): void
     {
         $this->policy->setBackOffPeriod(-1000);

@@ -27,12 +27,6 @@ class UniformRandomBackOffPolicyTest extends TestCase
         $this->policy->setSleeper($this->sleeper);
     }
 
-    protected function tearDown(): void
-    {
-        $this->policy  = null;
-        $this->sleeper = null;
-    }
-
     public function testSingleBackOff(): void
     {
         $min = $this->policy->getMinBackOffPeriod();
