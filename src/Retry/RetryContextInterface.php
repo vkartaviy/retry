@@ -25,7 +25,7 @@ interface RetryContextInterface
      * @param \Exception $exception The exception that caused the current retry attempt to fail.
      * @return void
      */
-    public function registerException(\Throwable $exception): void;
+    public function registerException(\Exception $exception): void;
 
     /**
      * Accessor for the exception object that caused the current retry.

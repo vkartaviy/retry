@@ -20,9 +20,9 @@ class LinearBackOffContext implements BackOffContextInterface
 
     public function __construct(int $seed, int $delta, int $max)
     {
-        $this->seed  = max(1, (int) $seed);
-        $this->delta = max(1, (int) $delta);
-        $this->max   = max(1, (int) $max);
+        $this->seed  = max(1, $seed);
+        $this->delta = max(1, $delta);
+        $this->max   = max(1, $max);
 
         $this->interval = $this->seed;
     }

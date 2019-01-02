@@ -57,7 +57,7 @@ class FixedBackOffPolicy extends StatelessBackOffPolicy
      */
     public function setBackOffPeriod(int $backOffPeriod): void
     {
-        $this->backOffPeriod = max(1, (int) $backOffPeriod);
+        $this->backOffPeriod = max(1, $backOffPeriod);
     }
 
     /**

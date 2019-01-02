@@ -15,7 +15,7 @@ class ExponentialBackOffContext implements BackOffContextInterface
     /** @var int */
     private $max;
 
-    /** @var int */
+    /** @var float */
     private $interval;
 
     public function __construct(int $seed, float $multiplier, int $max)

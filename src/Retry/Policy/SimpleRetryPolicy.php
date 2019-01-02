@@ -43,7 +43,7 @@ class SimpleRetryPolicy extends AbstractRetryPolicy
             $maxAttempts = self::DEFAULT_MAX_ATTEMPTS;
         }
 
-        $this->maxAttempts = (int) $maxAttempts;
+        $this->maxAttempts = $maxAttempts;
 
         if ($retryableExceptions) {
             $this->retryableExceptions = $retryableExceptions;
@@ -68,7 +68,7 @@ class SimpleRetryPolicy extends AbstractRetryPolicy
      */
     public function setMaxAttempts(int $maxAttempts): void
     {
-        $this->maxAttempts = (int) $maxAttempts;
+        $this->maxAttempts = $maxAttempts;
     }
 
     /**

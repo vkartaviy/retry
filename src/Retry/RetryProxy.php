@@ -46,7 +46,7 @@ class RetryProxy implements RetryProxyInterface
      * @return mixed
      * @throws \Exception
      */
-    public function call(callable $action, array $arguments = [])
+    public function call(callable $action, array $arguments = []): mixed
     {
         $retryContext   = $this->retryPolicy->open();
         $backOffContext = $this->backOffPolicy->start($retryContext);

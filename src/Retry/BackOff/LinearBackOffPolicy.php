@@ -106,7 +106,7 @@ class LinearBackOffPolicy extends AbstractBackOffPolicy
      */
     public function setInitialInterval(int $initialInterval): void
     {
-        $this->initialInterval = max(1, (int) $initialInterval);
+        $this->initialInterval = max(1, $initialInterval);
     }
 
     /**
@@ -150,7 +150,7 @@ class LinearBackOffPolicy extends AbstractBackOffPolicy
      */
     public function setMaxInterval(int $maxInterval): void
     {
-        $this->maxInterval = max(1, (int) $maxInterval);
+        $this->maxInterval = max(1, $maxInterval);
     }
 
     public function setSleeper(SleeperInterface $sleeper): void
@@ -160,7 +160,7 @@ class LinearBackOffPolicy extends AbstractBackOffPolicy
 
     public function start(?RetryContextInterface $context = null): BackOffContextInterface
     {
-        return new LinearBackOffContext($this->initialInterval, $this->deltaInterval, $this->maxInterval);
+        return new LinearBackOffContext($this->initialInterval, $this->getDeltaInterval(), $this->maxInterval);
     }
 
     /**

@@ -50,10 +50,10 @@ class TimeoutRetryPolicy extends AbstractRetryPolicy
     /**
      * Setter for timeout in milliseconds. Default is 1000 ms.
      *
-     * @param timeout
+     * @param int
      * @return void
      */
-    public function setTimeout(timeout $timeout): void
+    public function setTimeout(int $timeout): void
     {
         $this->timeout = (int) $timeout;
     }

@@ -69,7 +69,7 @@ class UniformRandomBackOffPolicy extends StatelessBackOffPolicy
      */
     public function setMinBackOffPeriod(int $backOffPeriod): void
     {
-        $this->minBackOffPeriod = max(1, (int) $backOffPeriod);
+        $this->minBackOffPeriod = max(1, $backOffPeriod);
     }
 
     /**
@@ -89,7 +89,7 @@ class UniformRandomBackOffPolicy extends StatelessBackOffPolicy
      */
     public function setMaxBackOffPeriod(int $backOffPeriod): void
     {
-        $this->maxBackOffPeriod = max(1, (int) $backOffPeriod);
+        $this->maxBackOffPeriod = max(1, $backOffPeriod);
     }
 
     /**

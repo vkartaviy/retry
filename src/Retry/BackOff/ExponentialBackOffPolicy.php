@@ -111,7 +111,7 @@ class ExponentialBackOffPolicy extends AbstractBackOffPolicy
      */
     public function setInitialInterval(int $initialInterval): void
     {
-        $this->initialInterval = max(1, (int) $initialInterval);
+        $this->initialInterval = max(1, $initialInterval);
     }
 
     /**
@@ -134,7 +134,7 @@ class ExponentialBackOffPolicy extends AbstractBackOffPolicy
      */
     public function setMultiplier(float $multiplier): void
     {
-        $this->multiplier = max(1, (float) $multiplier);
+        $this->multiplier = max(1, $multiplier);
     }
 
     /**
@@ -157,7 +157,7 @@ class ExponentialBackOffPolicy extends AbstractBackOffPolicy
      */
     public function setMaxInterval(int $maxInterval): void
     {
-        $this->maxInterval = max(1, (int) $maxInterval);
+        $this->maxInterval = max(1, $maxInterval);
     }
 
     public function setSleeper(SleeperInterface $sleeper): void
