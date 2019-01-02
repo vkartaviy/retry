@@ -59,6 +59,7 @@ class SimpleRetryPolicyTest extends TestCase
     {
         $this->policy->registerException($this->context, new \RuntimeException('foo'));
         $this->assertEquals(1, $this->context->getRetryCount());
-        $this->assertEquals('foo', $this->context->getLastException()->getMessage());
+        $message = $this->context->getLastException() ? $this->context->getLastException()->getMessage() : '';
+        $this->assertEquals('foo', $message);
     }
 }

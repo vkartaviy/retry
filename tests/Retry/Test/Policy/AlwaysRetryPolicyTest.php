@@ -37,9 +37,7 @@ class AlwaysRetryPolicyTest extends TestCase
     {
         $this->policy->registerException($this->context, new \RuntimeException('foo'));
         $this->assertEquals(1, $this->context->getRetryCount());
-        $lastException = $this->context->getLastException();
-        $this->assertNotNull($lastException);
-        $message = $lastException->getMessage();
+        $message = $this->context->getLastException() ? $this->context->getLastException()->getMessage() : '';
         $this->assertEquals('foo', $message);
     }
 }
