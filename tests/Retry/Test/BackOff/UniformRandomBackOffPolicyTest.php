@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Retry\Test\Retry\BackOff;
+namespace Retry\Test\BackOff;
 
 use PHPUnit\Framework\TestCase;
 use Retry\BackOff\UniformRandomBackOffPolicy;
