@@ -6,13 +6,19 @@ namespace Retry\BackOff;
 
 class LinearBackOffContext implements BackOffContextInterface
 {
+    /** @var int */
     private $seed;
+
+    /** @var int */
     private $delta;
+
+    /** @var int */
     private $max;
 
+    /** @var int */
     private $interval;
 
-    public function __construct($seed, $delta, $max)
+    public function __construct(int $seed, int $delta, int $max)
     {
         $this->seed  = max(1, (int) $seed);
         $this->delta = max(1, (int) $delta);
@@ -21,7 +27,7 @@ class LinearBackOffContext implements BackOffContextInterface
         $this->interval = $this->seed;
     }
 
-    public function getIntervalAndIncrement()
+    public function getIntervalAndIncrement(): int
     {
         $interval = $this->interval;
 
@@ -34,7 +40,7 @@ class LinearBackOffContext implements BackOffContextInterface
         return $interval;
     }
 
-    public function getInterval()
+    public function getInterval(): int
     {
         return $this->interval;
     }
@@ -44,12 +50,12 @@ class LinearBackOffContext implements BackOffContextInterface
         $this->interval = $this->seed;
     }
 
-    public function getNextInterval()
+    public function getNextInterval(): int
     {
         return $this->interval + $this->delta;
     }
 
-    public function getDelta()
+    public function getDelta(): int
     {
         return $this->delta;
     }

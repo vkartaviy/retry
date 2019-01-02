@@ -21,8 +21,10 @@ class RetryProxy implements RetryProxyInterface
      */
     private $backOffPolicy;
 
-    public function __construct(?RetryPolicyInterface $retryPolicy = null, ?BackOffPolicyInterface $backOffPolicy = null)
-    {
+    public function __construct(
+        ?RetryPolicyInterface $retryPolicy = null,
+        ?BackOffPolicyInterface $backOffPolicy = null
+    ) {
         if ($retryPolicy === null) {
             $retryPolicy = new SimpleRetryPolicy();
         }
@@ -65,7 +67,8 @@ class RetryProxy implements RetryProxyInterface
             }
         };
 
-        if ($lastException = $retryContext->getLastException()) {
+        $lastException = $retryContext->getLastException();
+        if ($lastException) {
             throw $lastException;
         }
 

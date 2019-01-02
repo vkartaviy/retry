@@ -12,7 +12,7 @@ use Retry\RetryContextInterface;
  */
 class AlwaysRetryPolicy extends AbstractRetryPolicy
 {
-    public function canRetry(RetryContextInterface $context)
+    public function canRetry(RetryContextInterface $context): bool
     {
         return true;
     }

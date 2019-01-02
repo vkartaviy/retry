@@ -7,7 +7,7 @@ namespace Retry\BackOff;
 use Retry\RetryContextInterface;
 
 /**
- * Implementation of {@link BackOffPolicyInterface} that linearly increases the back-off period for each retry attempt in a given set.
+ * Implementation of {@link BackOffPolicyInterface} that linearly increases the back-off period for each retry attempt.
  */
 class LinearBackOffPolicy extends AbstractBackOffPolicy
 {
@@ -16,21 +16,21 @@ class LinearBackOffPolicy extends AbstractBackOffPolicy
      *
      * @var int
      */
-    const DEFAULT_INITIAL_INTERVAL = 1000;
+    public const DEFAULT_INITIAL_INTERVAL = 1000;
 
     /**
      * The default maximum back-off time (30 seconds).
      *
      * @var int
      */
-    const DEFAULT_MAX_INTERVAL = 30000;
+    public const DEFAULT_MAX_INTERVAL = 30000;
 
     /**
      * The default delta value (1 second).
      *
      * @var float
      */
-    const DEFAULT_DELTA_INTERVAL = 1000;
+    public const DEFAULT_DELTA_INTERVAL = 1000;
 
     /**
      * The initial sleep interval.
@@ -116,7 +116,7 @@ class LinearBackOffPolicy extends AbstractBackOffPolicy
      */
     public function getDeltaInterval(): int
     {
-        return $this->deltaInterval;
+        return (int) $this->deltaInterval;
     }
 
     /**
@@ -158,7 +158,7 @@ class LinearBackOffPolicy extends AbstractBackOffPolicy
         $this->sleeper = $sleeper;
     }
 
-    public function start(?RetryContextInterface $context = null)
+    public function start(?RetryContextInterface $context = null): BackOffContextInterface
     {
         return new LinearBackOffContext($this->initialInterval, $this->deltaInterval, $this->maxInterval);
     }

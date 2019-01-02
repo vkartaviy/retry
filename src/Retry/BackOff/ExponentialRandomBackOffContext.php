@@ -6,7 +6,7 @@ namespace Retry\BackOff;
 
 class ExponentialRandomBackOffContext extends ExponentialBackOffContext
 {
-    public function getIntervalAndIncrement()
+    public function getIntervalAndIncrement(): int
     {
         $random     = mt_rand(0, mt_getrandmax()) / mt_getrandmax();
         $multiplier = $this->getMultiplier();

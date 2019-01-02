@@ -7,7 +7,8 @@ namespace Retry\BackOff;
 use Retry\RetryContextInterface;
 
 /**
- * Implementation of {@link BackOffPolicyInterface} that exponentially increases the back-off period for each retry attempt in a given set.
+ * Implementation of {@link BackOffPolicyInterface}
+ * that exponentially increases the back-off period for each retry attempt in a given set.
  */
 class ExponentialBackOffPolicy extends AbstractBackOffPolicy
 {
@@ -17,21 +18,21 @@ class ExponentialBackOffPolicy extends AbstractBackOffPolicy
      *
      * @var int
      */
-    const DEFAULT_INITIAL_INTERVAL = 100;
+    public const DEFAULT_INITIAL_INTERVAL = 100;
 
     /**
      * The default maximum back-off time (30 seconds).
      *
      * @var int
      */
-    const DEFAULT_MAX_INTERVAL = 30000;
+    public const DEFAULT_MAX_INTERVAL = 30000;
 
     /**
      * The default multiplier value - 2 (100% increase per back-off).
      *
      * @var float
      */
-    const DEFAULT_MULTIPLIER = 2;
+    public const DEFAULT_MULTIPLIER = 2;
 
     /**
      * The initial sleep interval.
@@ -63,10 +64,12 @@ class ExponentialBackOffPolicy extends AbstractBackOffPolicy
      * @param int $initialInterval The initial sleep interval value. Default is 100 ms.
      *                             Cannot be set to a value less than one.
      * @param float $multiplier    The multiplier value. Default is 2.
-     *                             Hint: Do not use values much in excess of 1.0 (or the back-off will get very long very fast).
+     *                             Hint: Do not use values much in excess of 1.0
+     *                             (or the back-off will get very long very fast).
      * @param int $maxInterval     The maximum back off period. Default is 30000 (30 seconds).
      *                             The value will be reset to 1 if this method is called with a value less than 1.
-     *                             Set this to avoid infinite waits if backing-off a large number of times (or if the multiplier is set too high).
+     *                             Set this to avoid infinite waits if backing-off a large number of times
+     *                             (or if the multiplier is set too high).
      */
     public function __construct(?int $initialInterval = null, ?float $multiplier = null, ?int $maxInterval = null)
     {
@@ -162,7 +165,7 @@ class ExponentialBackOffPolicy extends AbstractBackOffPolicy
         $this->sleeper = $sleeper;
     }
 
-    public function start(?RetryContextInterface $context = null)
+    public function start(?RetryContextInterface $context = null): BackOffContextInterface
     {
         return new ExponentialBackOffContext($this->initialInterval, $this->multiplier, $this->maxInterval);
     }

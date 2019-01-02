@@ -12,10 +12,11 @@ class FixedBackOffPolicy extends StatelessBackOffPolicy
     /**
      * Default back off period - 1000 ms.
      */
-    const DEFAULT_BACK_OFF_PERIOD = 1000;
+    public const DEFAULT_BACK_OFF_PERIOD = 1000;
 
     /**
      * The back off period in milliseconds.
+     * @var int
      */
     private $backOffPeriod;
 

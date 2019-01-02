@@ -12,12 +12,12 @@ use Retry\RetryContextInterface;
  */
 class NeverRetryPolicy extends AbstractRetryPolicy
 {
-    public function open()
+    public function open(): RetryContextInterface
     {
         return new NeverRetryContext();
     }
 
-    public function canRetry(RetryContextInterface $context)
+    public function canRetry(RetryContextInterface $context): bool
     {
         $context = NeverRetryContext::cast($context);
 

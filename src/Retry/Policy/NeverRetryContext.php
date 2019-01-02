@@ -8,9 +8,10 @@ use Retry\RetryContextInterface;
 
 class NeverRetryContext extends RetryContext
 {
+    /** @var bool  */
     private $finished = false;
 
-    public function isFinished()
+    public function isFinished(): bool
     {
         return $this->finished;
     }

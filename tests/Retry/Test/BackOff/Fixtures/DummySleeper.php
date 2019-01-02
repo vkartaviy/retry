@@ -26,7 +26,7 @@ class DummySleeper implements SleeperInterface
         return $this->backOffs;
     }
 
-    public function sleep($backOffPeriod): void
+    public function sleep(int $backOffPeriod): void
     {
         $this->backOffs[] = $backOffPeriod;
     }

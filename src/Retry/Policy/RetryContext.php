@@ -21,7 +21,7 @@ class RetryContext implements RetryContextInterface
     /**
      * @inheritdoc
      */
-    public function getRetryCount()
+    public function getRetryCount(): int
     {
         return $this->retryCount;
     }
@@ -29,7 +29,7 @@ class RetryContext implements RetryContextInterface
     /**
      * @inheritdoc
      */
-    public function registerException(\Throwable $exception)
+    public function registerException(\Throwable $exception): void
     {
         $this->lastException = $exception;
         $this->retryCount++;
@@ -38,7 +38,7 @@ class RetryContext implements RetryContextInterface
     /**
      * @inheritdoc
      */
-    public function getLastException()
+    public function getLastException(): \Throwable
     {
         return $this->lastException;
     }

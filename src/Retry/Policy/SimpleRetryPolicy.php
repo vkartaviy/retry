@@ -17,7 +17,7 @@ class SimpleRetryPolicy extends AbstractRetryPolicy
      *
      * @var int
      */
-    const DEFAULT_MAX_ATTEMPTS = 3;
+    public const DEFAULT_MAX_ATTEMPTS = 3;
 
     /**
      * The maximum number of retry attempts before failure.
@@ -80,14 +80,14 @@ class SimpleRetryPolicy extends AbstractRetryPolicy
         $this->retryableExceptions = $retryableExceptions;
     }
 
-    public function canRetry(RetryContextInterface $context)
+    public function canRetry(RetryContextInterface $context): bool
     {
         $e = $context->getLastException();
 
         return (!$e || $this->shouldRetryForException($e)) && $context->getRetryCount() < $this->maxAttempts;
     }
 
-    private function shouldRetryForException(\Throwable $e)
+    private function shouldRetryForException(\Throwable $e): bool
     {
         foreach ($this->retryableExceptions as $class) {
             if (is_a($e, $class)) {

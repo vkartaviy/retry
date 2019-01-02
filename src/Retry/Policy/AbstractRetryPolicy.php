@@ -11,7 +11,7 @@ abstract class AbstractRetryPolicy implements RetryPolicyInterface
     /**
      * @inheritdoc
      */
-    public function open()
+    public function open(): RetryContextInterface
     {
         return new RetryContext();
     }
@@ -19,7 +19,7 @@ abstract class AbstractRetryPolicy implements RetryPolicyInterface
     /**
      * @inheritdoc
      */
-    public function registerException(RetryContextInterface $context, \Throwable $exception)
+    public function registerException(RetryContextInterface $context, \Throwable $exception): void
     {
         $context->registerException($exception);
     }

@@ -8,16 +8,19 @@ use Retry\RetryContextInterface;
 
 class TimeoutRetryContext extends RetryContext
 {
+    /** @var int  */
     private $timeout;
+
+    /** @var mixed  */
     private $start;
 
-    public function __construct($timeout)
+    public function __construct(int $timeout)
     {
-        $this->timeout = (int) $timeout;
+        $this->timeout = $timeout;
         $this->start   = microtime(true);
     }
 
-    public function isAlive()
+    public function isAlive(): bool
     {
         return (microtime(true) - $this->start) * 1000 <= $this->timeout;
     }

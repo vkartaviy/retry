@@ -16,7 +16,7 @@ class TimeoutRetryPolicy extends AbstractRetryPolicy
      *
      * @var int
      */
-    const DEFAULT_TIMEOUT = 1000;
+    public const DEFAULT_TIMEOUT = 1000;
 
     /**
      * The value of the timeout.
@@ -58,12 +58,12 @@ class TimeoutRetryPolicy extends AbstractRetryPolicy
         $this->timeout = (int) $timeout;
     }
 
-    public function open()
+    public function open(): RetryContextInterface
     {
         return new TimeoutRetryContext($this->timeout);
     }
 
-    public function canRetry(RetryContextInterface $context)
+    public function canRetry(RetryContextInterface $context): bool
     {
         $context = TimeoutRetryContext::cast($context);
 

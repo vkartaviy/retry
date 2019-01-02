@@ -22,8 +22,12 @@ use Retry\RetryContextInterface;
  */
 class ExponentialRandomBackOffPolicy extends ExponentialBackOffPolicy
 {
-    public function start(?RetryContextInterface $context = null)
+    public function start(?RetryContextInterface $context = null): BackOffContextInterface
     {
-        return new ExponentialRandomBackOffContext($this->getInitialInterval(), $this->getMultiplier(), $this->getMaxInterval());
+        return new ExponentialRandomBackOffContext(
+            $this->getInitialInterval(),
+            $this->getMultiplier(),
+            $this->getMaxInterval()
+        );
     }
 }

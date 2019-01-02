@@ -14,14 +14,14 @@ class UniformRandomBackOffPolicy extends StatelessBackOffPolicy
      *
      * @var int
      */
-    const DEFAULT_BACK_OFF_MIN_PERIOD = 500;
+    public const DEFAULT_BACK_OFF_MIN_PERIOD = 500;
 
     /**
      * Default max back off period (1500ms).
      *
      * @var int
      */
-    const DEFAULT_BACK_OFF_MAX_PERIOD = 1500;
+    public const DEFAULT_BACK_OFF_MAX_PERIOD = 1500;
 
     /**
      * The minimum back off period in milliseconds.
