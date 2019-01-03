@@ -82,8 +82,9 @@ class CallableRetryPolicy extends AbstractRetryPolicy
     {
         $e = $context->getLastException();
 
-        $shouldRetry = !$e || call_user_func($this->shouldRetryForException, $e);
-
-        return $shouldRetry && $context->getRetryCount() < $this->maxAttempts;
+        if ($context->getRetryCount() < $this->maxAttempts) {
+            return !$e || call_user_func($this->shouldRetryForException, $e);
+        }
+        return false;
     }
 }
