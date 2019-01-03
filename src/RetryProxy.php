@@ -40,11 +40,6 @@ class RetryProxy implements RetryProxyInterface
     /**
      * Executing the action until it either succeeds or the policy dictates that we stop,
      * in which case the most recent exception thrown by the action will be rethrown.
-     *
-     * @param callable $action
-     * @param array $arguments
-     * @return mixed
-     * @throws \Exception
      */
     public function call(callable $action, array $arguments = []): ?mixed
     {

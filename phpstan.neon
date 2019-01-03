@@ -1,3 +1,4 @@
 parameters:
     ignoreErrors:
         - '#Return typehint of method Retry\\RetryProxy::call\(\) has invalid type Retry\\mixed.#'
+        - '#Cannot call method getMessage\(\) on Throwable|null.#'
