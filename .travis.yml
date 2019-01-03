@@ -1,12 +1,8 @@
-language: php
-
-php:
-    - 5.4
-    - 5.5
-    - 5.6
-
-before_script:
-    - wget http://getcomposer.org/composer.phar
-    - php composer.phar install --dev
-
-script: phpunit --coverage-text
+language: bash
+services:
+- docker
+script:
+- docker-compose run --rm tests
+notifications:
+  slack:
+    secure: f0FQ1J1ReFAhWCzu9S0Ch5ygUxBK1CFHcxdk26J2+qBgREovuBqwWbfAX0tCCSTu8AraRbcNTwMWNBk8UNmQoZxFAAcfbUPl1zNQwFDh7PLnbRxMFg8SXut6bftrL/18Ryn+g4qQPQvaUqPwWdcsCuD0uEzaYz+8J5kCDG6lcL67LOc54skGVPyRM73/hZIrutStgXoXY38qrwz3aul7bDNiLbgIhEIEypHZg+hCBmH5tfCQFCJMkmnsQFHqnVKSrbFavVlvYXHeTxvgM4HBD0xyVzS3h2oV65ZgdAIezsxFOcywBSMSliktcU7Ki1pS71NsXzh8G+nauuxXJvUFWlrh6FfNR3zGkbwX+PdbpF65NCsHaV6VgGzxddvOqzKOM1BSHlEucIaqZH49VZ3Lz9Q7PPkx/m3JDGs+l6UC8DGByBuxl9Qaa+4WuqmdVJNdP4Aw5Wbfrfw5e6VuOb8Ynk0XHKmi6c6SKoxGVQVLArs0LA0iK8nNrtAIKrMfts5uGf8B5vQ8nKL6xwjWLtVuX0gy3i/CQ+cyK1WmHwyK4OpunN4uih0FHDRiyjeej30EuA/h3F5FyQQh2bk08VGEQOiC5DPh9hQXPlXGjdMxP2TAFfH4+lMmejUBeDp+Ccxvbr6tffzf+iWfCzmRJPG9SY+MYb1PvC6ObIda1oJc9fM=

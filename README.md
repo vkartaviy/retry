@@ -1,9 +1,10 @@
 Batch
 =====
 
-The library for repeatable and retryable operations.
+The library for repeatable and retryable operations.  
+(Forked from https://github.com/vkartaviy/retry)
 
-[![Build Status](https://secure.travis-ci.org/vkartaviy/retry.png?branch=master)](http://travis-ci.org/vkartaviy/retry)
+[![Build Status](https://secure.travis-ci.org/keboola/retry.png?branch=master)](http://travis-ci.org/keboola/retry)
 
 
 Here is a simple example:
