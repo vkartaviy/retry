@@ -86,18 +86,4 @@ class CallableRetryPolicy extends AbstractRetryPolicy
 
         return $shouldRetry && $context->getRetryCount() < $this->maxAttempts;
     }
-
-    /*
-    private function shouldRetryForException
-    (\Throwable $e): bool
-    {
-        foreach ($this->retryableExceptions as $class) {
-            if (is_a($e, $class)) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-    */
 }
