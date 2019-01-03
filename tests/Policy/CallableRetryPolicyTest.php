@@ -71,18 +71,18 @@ class CallableRetryPolicyTest extends TestCase
 
     public function testSettingMethodInConstructor(): void
     {
-        $this->policy = new CallableRetryPolicy(function (\Throwable $e) {
+        $policy = new CallableRetryPolicy(function (\Throwable $e) {
             if ($e instanceof \RuntimeException) {
                 return true;
             }
             return false;
         });
-        $this->context = $this->policy->open();
+        $context = $policy->open();
 
-        $this->policy->registerException($this->context, new \RuntimeException());
-        $this->assertTrue($this->policy->canRetry($this->context));
-        $this->policy->registerException($this->context, new \InvalidArgumentException());
-        $this->assertFalse($this->policy->canRetry($this->context));
+        $policy->registerException($context, new \RuntimeException());
+        $this->assertTrue($policy->canRetry($context));
+        $policy->registerException($context, new \InvalidArgumentException());
+        $this->assertFalse($policy->canRetry($context));
     }
 
     public function testRetryCount(): void
