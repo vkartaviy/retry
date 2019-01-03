@@ -64,7 +64,7 @@ class RetryProxy implements RetryProxyInterface
             }
 
             if ($this->retryPolicy->canRetry($retryContext)) {
-                if ($this->logger) {
+                if (isset($this->logger)) {
                     $this->logger->info(
                         sprintf(
                             '%s. Retrying... [%dx]',
@@ -84,7 +84,7 @@ class RetryProxy implements RetryProxyInterface
 
         throw new RetryException('Action call is failed.');
     }
-    
+
     public function setLogger(Logger $logger): void
     {
         $this->logger = $logger;
