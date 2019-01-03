@@ -75,13 +75,9 @@ class CallableRetryPolicy extends AbstractRetryPolicy
 
     public function setShouldRetryMethod(callable $shoultRetry): void
     {
-        if (is_callable($shoultRetry)) {
-            $this->shouldRetryForException = $shoultRetry;
-        } else {
-            throw new \InvalidArgumentException("The argument provided to check retryability must be callable.");
-        }
+        $this->shouldRetryForException = $shoultRetry;
     }
-    
+
     public function canRetry(RetryContextInterface $context): bool
     {
         $e = $context->getLastException();
