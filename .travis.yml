@@ -1,7 +1,8 @@
 language: bash
-
 services:
-  - docker
-
+- docker
 script:
-  - docker-compose run --rm tests
+- docker-compose run --rm tests
+notifications:
+  slack:
+    secure: EjC1sYGqM7lmvjGsSRhGT8wVzBVKQj0Yq9k8GUiI3+cwqJgcJf3/ITEkvtxymMHrb5aZ8BhLOg1hqgOXrsJTKF4V7i0cmREnUYN6smkgf3nckDhghoCoBzYhxynqXxGWe/Ned7DkqfZywIffNaLDGGtrs3etifm7dUbMO7kDQkDcn8IqczUOYA/dyiqEWZ/JjDQktqGHekAfOukjaql2L2n2dvhgjCONsoLi9RHMVcxqzuOwukrD4EMkHr9U1Ml0KdWtA6zC8QTVM3QPKKO+D/A5aAjrQPObGh1nBdUln4iTV+9Qw3pHrg1v7JemzIEF3TRXakpPgsHqJzgPqvoHzhe/SnHWUoCJYS+h6DhkiMhIyr5HCUcsFh/jUYxfKIhxQ75pSENKhfl+BEW0AbZn/5hSAujFtiUMOtxvmjzW8+31KRVjxWdi7oi64bkmMIe5YrItSVq0dGvSNEvk99zo8npv3X6XDilEsG+hyAdS3Ec0iuoH/Qy35cBMjFDxlXg0fwneoCm04Q8sW51lqp4BcGASjxBKF7EOhym5eUk/PWfItMZlSZzqZMHooNXKI5oiWF7TA5gx8VXk0odKxPjvfFzA92vF4UIlqJVKN1wweNPFa09Ik+2waaSqcunWfTYRoQ6l15SAuQJ5cJlklKpUyO7i14auXXtFmp4QAC1Qx+4=
