@@ -66,7 +66,7 @@ class ExponentialRandomBackOffPolicyTest extends TestCase
             $this->backOff($context);
             $this->assertEquals($this->randomize($seed, $multiplier), $this->sleeper->getLastBackOff());
 
-            $seed *= $multiplier;
+            $seed = (int) ($seed * $multiplier);
         }
     }
 
@@ -76,11 +76,11 @@ class ExponentialRandomBackOffPolicyTest extends TestCase
         $this->policy->backOff($context);
     }
 
-    private function randomize(int $seed, float $multiplier): float
+    private function randomize(int $seed, float $multiplier): int
     {
         mt_srand(1);
         $random = mt_rand(0, mt_getrandmax()) / mt_getrandmax();
 
-        return $seed * (1 + $random * ($multiplier - 1));
+        return (int) ($seed * (1 + $random * ($multiplier - 1)));
     }
 }

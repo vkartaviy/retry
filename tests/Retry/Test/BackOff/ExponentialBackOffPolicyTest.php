@@ -59,7 +59,7 @@ class ExponentialBackOffPolicyTest extends TestCase
             $this->policy->backOff($context);
             $this->assertEquals($seed, $this->sleeper->getLastBackOff());
 
-            $seed *= $multiplier;
+            $seed = (int) ($seed * $multiplier);
         }
     }
 }
