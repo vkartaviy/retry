@@ -39,7 +39,6 @@ class TimeoutRetryPolicyTest extends TestCase
 
         $this->policy->registerException($context, new \RuntimeException('foo'));
         $this->assertEquals(1, $context->getRetryCount());
-        $message = $context->getLastException() ? $context->getLastException()->getMessage() : '';
-        $this->assertEquals('foo', $message);
+        $this->assertEquals('foo', $context->getLastException()->getMessage());
     }
 }
