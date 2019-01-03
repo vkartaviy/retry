@@ -31,16 +31,23 @@ class CallableRetryPolicy extends AbstractRetryPolicy
     private $shouldRetryForException;
 
     /**
+     * @param callable   $shouldRetry Method that accepts Throwable and returns bool, whether an Exception should be
+     *                   retried or not.  If not provided, defaults to AlwaysRetryPolicy equivalent
      * @param int        $maxAttempts The number of attempts before a retry becomes impossible.
-     * @param array|null $retryableExceptions
      */
-    public function __construct(callable $shouldRetry, ?int $maxAttempts = null)
+    public function __construct(?callable $shouldRetry = null, ?int $maxAttempts = null)
     {
         if ($maxAttempts === null) {
             $maxAttempts = self::DEFAULT_MAX_ATTEMPTS;
         }
 
         $this->maxAttempts = $maxAttempts;
+
+        if ($shouldRetry === null) {
+            $shouldRetry = function(\Throwable $e): bool {
+                return true;
+            };
+        }
 
         $this->shouldRetryForException = $shouldRetry;
     }
@@ -71,7 +78,7 @@ class CallableRetryPolicy extends AbstractRetryPolicy
         $e = $context->getLastException();
 
         $shouldRetry = !$e || call_user_func($this->shouldRetryForException, $e);
-        
+
         return $shouldRetry && $context->getRetryCount() < $this->maxAttempts;
     }
 
