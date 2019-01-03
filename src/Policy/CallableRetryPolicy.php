@@ -73,9 +73,9 @@ class CallableRetryPolicy extends AbstractRetryPolicy
         $this->maxAttempts = $maxAttempts;
     }
 
-    public function setShouldRetryMethod(callable $shoultRetry): void
+    public function setShouldRetryMethod(callable $shouldRetry): void
     {
-        $this->shouldRetryForException = $shoultRetry;
+        $this->shouldRetryForException = $shouldRetry;
     }
 
     public function canRetry(RetryContextInterface $context): bool
