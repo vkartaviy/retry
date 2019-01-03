@@ -56,7 +56,7 @@ class CallableRetryPolicyTest extends TestCase
 
     public function testSimpleShouldRetryCallback(): void
     {
-        $this->policy->setShouldRetryMethod(function(\Throwable $e) {
+        $this->policy->setShouldRetryMethod(function (\Throwable $e) {
             if ($e instanceof \RuntimeException) {
                 return true;
             }
@@ -71,7 +71,7 @@ class CallableRetryPolicyTest extends TestCase
 
     public function testSettingMethodInConstructor(): void
     {
-        $this->policy = new CallableRetryPolicy(function(\Throwable $e) {
+        $this->policy = new CallableRetryPolicy(function (\Throwable $e) {
             if ($e instanceof \RuntimeException) {
                 return true;
             }

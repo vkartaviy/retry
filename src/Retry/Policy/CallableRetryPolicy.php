@@ -44,7 +44,7 @@ class CallableRetryPolicy extends AbstractRetryPolicy
         $this->maxAttempts = $maxAttempts;
 
         if ($shouldRetry === null) {
-            $shouldRetry = function(\Throwable $e): bool {
+            $shouldRetry = function (\Throwable $e): bool {
                 return true;
             };
         }
