@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Retry;
 
+use Monolog\Logger;
 use Retry\Policy\RetryPolicyInterface;
 use Retry\Policy\SimpleRetryPolicy;
 use Retry\BackOff\BackOffPolicyInterface;
@@ -20,6 +21,11 @@ class RetryProxy implements RetryProxyInterface
      * @var BackOffPolicyInterface
      */
     private $backOffPolicy;
+
+    /**
+     * @var Logger
+     */
+    private $logger;
 
     public function __construct(
         ?RetryPolicyInterface $retryPolicy = null,
@@ -58,6 +64,15 @@ class RetryProxy implements RetryProxyInterface
             }
 
             if ($this->retryPolicy->canRetry($retryContext)) {
+                if ($this->logger) {
+                    $this->logger->info(
+                        sprintf(
+                            '%s. Retrying... [%dx]',
+                            $thrownException->getMessage(),
+                            $retryContext->getRetryCount()
+                        )
+                    );
+                }
                 $this->backOffPolicy->backOff($backOffContext);
             }
         };
@@ -68,5 +83,10 @@ class RetryProxy implements RetryProxyInterface
         }
 
         throw new RetryException('Action call is failed.');
+    }
+    
+    public function setLogger(Logger $logger): void
+    {
+        $this->logger = $logger;
     }
 }
