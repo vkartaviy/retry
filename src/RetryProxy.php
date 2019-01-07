@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace Retry;
 
+use Psr\Log\NullLogger;
 use Retry\Policy\RetryPolicyInterface;
 use Retry\Policy\SimpleRetryPolicy;
 use Retry\BackOff\BackOffPolicyInterface;
 use Retry\BackOff\ExponentialBackOffPolicy;
+use Psr\Log\LoggerInterface;
 
 class RetryProxy implements RetryProxyInterface
 {
@@ -21,9 +23,15 @@ class RetryProxy implements RetryProxyInterface
      */
     private $backOffPolicy;
 
+    /**
+     * @var LoggerInterface
+     */
+    private $logger;
+
     public function __construct(
         ?RetryPolicyInterface $retryPolicy = null,
-        ?BackOffPolicyInterface $backOffPolicy = null
+        ?BackOffPolicyInterface $backOffPolicy = null,
+        ?LoggerInterface $logger = null
     ) {
         if ($retryPolicy === null) {
             $retryPolicy = new SimpleRetryPolicy();
@@ -33,8 +41,13 @@ class RetryProxy implements RetryProxyInterface
             $backOffPolicy = new ExponentialBackOffPolicy();
         }
 
+        if ($logger === null) {
+            $logger = new NullLogger();
+        }
+
         $this->retryPolicy   = $retryPolicy;
         $this->backOffPolicy = $backOffPolicy;
+        $this->logger = $logger;
     }
 
     /**
@@ -58,6 +71,13 @@ class RetryProxy implements RetryProxyInterface
             }
 
             if ($this->retryPolicy->canRetry($retryContext)) {
+                $this->logger->info(
+                    sprintf(
+                        '%s. Retrying... [%dx]',
+                        $thrownException->getMessage(),
+                        $retryContext->getRetryCount()
+                    )
+                );
                 $this->backOffPolicy->backOff($backOffContext);
             }
         };

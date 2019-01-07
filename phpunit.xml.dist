@@ -11,13 +11,13 @@
          bootstrap="vendor/autoload.php">
     <testsuites>
         <testsuite name="Retry Test Suite">
-            <directory suffix="Test.php">./tests/Retry/Test/</directory>
+            <directory suffix="Test.php">./tests/</directory>
         </testsuite>
     </testsuites>
 
     <filter>
         <whitelist>
-            <directory suffix=".php">./src/Retry/</directory>
+            <directory suffix=".php">./src/</directory>
         </whitelist>
     </filter>
 </phpunit>
