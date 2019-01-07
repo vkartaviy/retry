@@ -71,15 +71,13 @@ class RetryProxy implements RetryProxyInterface
             }
 
             if ($this->retryPolicy->canRetry($retryContext)) {
-                if (isset($this->logger)) {
-                    $this->logger->info(
-                        sprintf(
-                            '%s. Retrying... [%dx]',
-                            $thrownException->getMessage(),
-                            $retryContext->getRetryCount()
-                        )
-                    );
-                }
+                $this->logger->info(
+                    sprintf(
+                        '%s. Retrying... [%dx]',
+                        $thrownException->getMessage(),
+                        $retryContext->getRetryCount()
+                    )
+                );
                 $this->backOffPolicy->backOff($backOffContext);
             }
         };
