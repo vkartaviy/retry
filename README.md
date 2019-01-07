@@ -4,7 +4,7 @@ Batch
 The library for repeatable and retryable operations.  
 (Forked from https://github.com/vkartaviy/retry)
 
-[![Build Status](https://secure.travis-ci.org/keboola/retry.png?branch=master)](http://travis-ci.org/keboola/retry)
+[![Build Status](https://travis-ci.com/keboola/retry.svg?branch=master)](https://travis-ci.com/keboola/retry)
 
 
 Here is a simple example:
