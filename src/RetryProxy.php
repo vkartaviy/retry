@@ -9,7 +9,7 @@ use Retry\Policy\RetryPolicyInterface;
 use Retry\Policy\SimpleRetryPolicy;
 use Retry\BackOff\BackOffPolicyInterface;
 use Retry\BackOff\ExponentialBackOffPolicy;
-use PSR\Log\LoggerInterface;
+use Psr\Log\LoggerInterface;
 
 class RetryProxy implements RetryProxyInterface
 {
