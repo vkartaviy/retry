@@ -1,4 +1,4 @@
-Batch
+Retry
 =====
 
 The library for repeatable and retryable operations.  
@@ -22,5 +22,26 @@ $backOffPolicy = new ExponentialBackOffPolicy();
 $proxy = new RetryProxy($retryPolicy, $backOffPolicy);
 $result = $proxy->call(function() {
     // call external service and return result
+});
+```
+
+If you want to supply your own retry decider method you can by using the CallableRetryPolicy
+
+```php
+<?php
+
+use Retry\RetryProxy;
+use Retry\Policy\SimpleRetryPolicy;
+use Retry\BackOff\ExponentialBackOffPolicy;
+
+$retryPolicy = new CallableRetryPolicy(function (\Throwable $e) {
+    if ($e->getCode() === 200) {
+        return false;
+    } 
+    return true;
+});
+$proxy = new RetryProxy($retryPolicy, new ExponentialBackOffPolicy());
+$result = $proxy->call(function() {
+   // call external service and return result
 });
 ```
