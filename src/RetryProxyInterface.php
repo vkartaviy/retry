@@ -12,4 +12,9 @@ interface RetryProxyInterface
      * @return mixed
      */
     public function call(callable $action, array $arguments = []);
+
+    /**
+     * @return int number of times the action was tried
+     */
+    public function getTryCount(): int;
 }
