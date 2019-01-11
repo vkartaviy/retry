@@ -85,4 +85,19 @@ class RetryProxyTest extends TestCase
             $this->assertEquals('Realllly bad!', $e->getMessage());
         }
     }
+
+    public function testTryCount(): void
+    {
+        $action = new MockRetryClass(5);
+        $proxy = new RetryProxy(new SimpleRetryPolicy(5, array('RuntimeException')));
+        try {
+            $proxy->call(array($action, 'action'));
+        } catch (\Throwable $e) {
+            $this->assertEquals(1, $action->attempts);
+            $this->assertEquals($proxy->getTryCount(), $action->attempts);
+        }
+        $action->exceptionToThrow = new \RuntimeException();
+        $proxy->call(array($action, 'action'));
+        $this->assertEquals(4, $proxy->getTryCount());
+    }
 }
