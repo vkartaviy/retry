@@ -29,7 +29,7 @@ class RetryProxy implements RetryProxyInterface
     private $logger;
 
     /**  @var int */
-    private $retryCount;
+    private $tryCount;
 
     public function __construct(
         ?RetryPolicyInterface $retryPolicy = null,
@@ -61,10 +61,11 @@ class RetryProxy implements RetryProxyInterface
     {
         $retryContext   = $this->retryPolicy->open();
         $backOffContext = $this->backOffPolicy->start($retryContext);
-        $this->retryCount = 0;
+        $this->tryCount = 0;
 
         while ($this->retryPolicy->canRetry($retryContext)) {
             try {
+                $this->tryCount++;
                 return call_user_func_array($action, $arguments);
             } catch (\Throwable $thrownException) {
                 try {
@@ -75,12 +76,11 @@ class RetryProxy implements RetryProxyInterface
             }
 
             if ($this->retryPolicy->canRetry($retryContext)) {
-                $this->retryCount = $retryContext->getRetryCount();
                 $this->logger->info(
                     sprintf(
                         '%s. Retrying... [%dx]',
                         $thrownException->getMessage(),
-                        $this->retryCount
+                        $retryContext->getRetryCount()
                     )
                 );
                 $this->backOffPolicy->backOff($backOffContext);
@@ -95,8 +95,8 @@ class RetryProxy implements RetryProxyInterface
         throw new RetryException('Action call is failed.');
     }
 
-    public function getRetryCount(): int
+    public function getTryCount(): int
     {
-        return $this->retryCount;
+        return $this->tryCount;
     }
 }
