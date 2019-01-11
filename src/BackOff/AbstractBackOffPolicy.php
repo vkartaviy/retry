@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Retry\BackOff;
+namespace Keboola\Retry\BackOff;
 
-use Retry\RetryContextInterface;
+use Keboola\Retry\RetryContextInterface;
 
 abstract class AbstractBackOffPolicy implements BackOffPolicyInterface
 {

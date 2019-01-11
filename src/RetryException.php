@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Retry;
+namespace Keboola\Retry;
 
 class RetryException extends \RuntimeException
 {

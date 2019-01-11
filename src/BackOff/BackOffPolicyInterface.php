@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Retry\BackOff;
+namespace Keboola\Retry\BackOff;
 
-use Retry\RetryContextInterface;
+use Keboola\Retry\RetryContextInterface;
 
 /**
  * Strategy interface to control back off between attempts in a single retry operation.

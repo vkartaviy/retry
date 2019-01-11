@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Retry\Test\BackOff\Fixtures;
+namespace Keboola\Retry\Test\BackOff\Fixtures;
 
-use Retry\BackOff\SleeperInterface;
+use Keboola\Retry\BackOff\SleeperInterface;
 
 class DummySleeper implements SleeperInterface
 {

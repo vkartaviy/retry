@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Retry\Test\Fixtures;
+namespace Keboola\Retry\Test\Fixtures;
 
 class MockRetryClass
 {

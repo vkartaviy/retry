@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Retry\Policy;
+namespace Keboola\Retry\Policy;
 
-use Retry\RetryContextInterface;
+use Keboola\Retry\RetryContextInterface;
 
 /**
  * A {@link RetryPolicyInterface} that always permits a retry.

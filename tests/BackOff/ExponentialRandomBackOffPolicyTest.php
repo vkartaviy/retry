@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Retry\Test\BackOff;
+namespace Keboola\Retry\Test\BackOff;
 
 use PHPUnit\Framework\TestCase;
-use Retry\BackOff\BackOffContextInterface;
-use Retry\BackOff\ExponentialRandomBackOffPolicy;
-use Retry\Test\BackOff\Fixtures\DummySleeper;
+use Keboola\Retry\BackOff\BackOffContextInterface;
+use Keboola\Retry\BackOff\ExponentialRandomBackOffPolicy;
+use Keboola\Retry\Test\BackOff\Fixtures\DummySleeper;
 
 class ExponentialRandomBackOffPolicyTest extends TestCase
 {

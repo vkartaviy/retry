@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Retry\BackOff;
+namespace Keboola\Retry\BackOff;
 
 /**
  * Implementation of {@link BackOffPolicyInterface} that pauses for a random period of time before continuing.

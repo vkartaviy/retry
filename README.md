@@ -12,9 +12,9 @@ Here is a simple example:
 ```php
 <?php
 
-use Retry\RetryProxy;
-use Retry\Policy\SimpleRetryPolicy;
-use Retry\BackOff\ExponentialBackOffPolicy;
+use Keboola\Retry\RetryProxy;
+use Keboola\Retry\Policy\SimpleRetryPolicy;
+use Keboola\Retry\BackOff\ExponentialBackOffPolicy;
 
 $retryPolicy = new SimpleRetryPolicy(3);
 $backOffPolicy = new ExponentialBackOffPolicy();
@@ -30,9 +30,9 @@ If you want to supply your own retry decider method you can by using the Callabl
 ```php
 <?php
 
-use Retry\RetryProxy;
-use Retry\Policy\SimpleRetryPolicy;
-use Retry\BackOff\ExponentialBackOffPolicy;
+use Keboola\Retry\RetryProxy;
+use Keboola\Retry\Policy\SimpleRetryPolicy;
+use Keboola\Retry\BackOff\ExponentialBackOffPolicy;
 
 $retryPolicy = new CallableRetryPolicy(function (\Throwable $e) {
     if ($e->getCode() === 200) {

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Retry\Test\Fixtures;
+namespace Keboola\Retry\Test\Fixtures;
 
-use Retry\BackOff\BackOffPolicyInterface;
-use Retry\BackOff\BackOffContextInterface;
-use Retry\RetryContextInterface;
+use Keboola\Retry\BackOff\BackOffPolicyInterface;
+use Keboola\Retry\BackOff\BackOffContextInterface;
+use Keboola\Retry\RetryContextInterface;
 
 class MockBackOffStrategy implements BackOffPolicyInterface
 {

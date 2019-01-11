@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Retry\Test\Policy;
+namespace Keboola\Retry\Test\Policy;
 
 use PHPUnit\Framework\TestCase;
-use Retry\Policy\TimeoutRetryPolicy;
+use Keboola\Retry\Policy\TimeoutRetryPolicy;
 
 class TimeoutRetryPolicyTest extends TestCase
 {

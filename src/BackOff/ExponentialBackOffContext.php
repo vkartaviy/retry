@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Retry\BackOff;
+namespace Keboola\Retry\BackOff;
 
 class ExponentialBackOffContext implements BackOffContextInterface
 {

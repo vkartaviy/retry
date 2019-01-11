@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Retry\BackOff;
+namespace Keboola\Retry\BackOff;
 
 /**
  * Implementation of {@link BackOffPolicyInterface} that performs a no-op and as such all

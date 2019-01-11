@@ -20,12 +20,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Retry\\": "src/"
+            "Keboola\\Retry\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Retry\\Test\\": "tests/"
+            "Keboola\\Retry\\Test\\": "tests/"
         }
     },
     "scripts": {

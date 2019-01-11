@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Retry\BackOff;
+namespace Keboola\Retry\BackOff;
 
 /**
  * Simple base class for {@link BackOffPolicyInterface} implementations that maintain no state across invocations.

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Retry;
+namespace Keboola\Retry;
 
 interface RetryProxyInterface
 {

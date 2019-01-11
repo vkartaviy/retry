@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Retry\Test\BackOff;
+namespace Keboola\Retry\Test\BackOff;
 
 use PHPUnit\Framework\TestCase;
-use Retry\BackOff\FixedBackOffPolicy;
-use Retry\Test\BackOff\Fixtures\DummySleeper;
+use Keboola\Retry\BackOff\FixedBackOffPolicy;
+use Keboola\Retry\Test\BackOff\Fixtures\DummySleeper;
 
 class FixedBackOffPolicyTest extends TestCase
 {

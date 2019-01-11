@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Retry;
+namespace Keboola\Retry;
 
 /**
  * Low-level access to ongoing retry operation.

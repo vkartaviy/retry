@@ -1,4 +1,4 @@
 parameters:
     ignoreErrors:
-        - '#Return typehint of method Retry\\RetryProxy::call\(\) has invalid type Retry\\mixed.#'
+        - '#Return typehint of method Keboola\\Retry\\RetryProxy::call\(\) has invalid type Keboola\\Retry\\mixed.#'
         - '#Cannot call method getMessage\(\) on Throwable|null.#'

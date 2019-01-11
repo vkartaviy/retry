@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Retry\Test;
+namespace Keboola\Retry\Test;
 
 use PHPUnit\Framework\TestCase;
-use Retry\RetryProxy;
-use Retry\Policy\SimpleRetryPolicy;
-use Retry\Policy\NeverRetryPolicy;
-use Retry\BackOff\NoBackOffPolicy;
-use Retry\Test\Fixtures\MockRetryClass;
-use Retry\Test\Fixtures\MockBackOffStrategy;
+use Keboola\Retry\RetryProxy;
+use Keboola\Retry\Policy\SimpleRetryPolicy;
+use Keboola\Retry\Policy\NeverRetryPolicy;
+use Keboola\Retry\BackOff\NoBackOffPolicy;
+use Keboola\Retry\Test\Fixtures\MockRetryClass;
+use Keboola\Retry\Test\Fixtures\MockBackOffStrategy;
 
 class RetryProxyTest extends TestCase
 {

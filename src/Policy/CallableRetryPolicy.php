@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Retry\Policy;
+namespace Keboola\Retry\Policy;
 
-use Retry\RetryContextInterface;
+use Keboola\Retry\RetryContextInterface;
 
 /**
  * Retry policy that retries a fixed number of times using a callback method to decide whether or not the Exception

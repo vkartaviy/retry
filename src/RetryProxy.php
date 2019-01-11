@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Retry;
+namespace Keboola\Retry;
 
 use Psr\Log\NullLogger;
-use Retry\Policy\RetryPolicyInterface;
-use Retry\Policy\SimpleRetryPolicy;
-use Retry\BackOff\BackOffPolicyInterface;
-use Retry\BackOff\ExponentialBackOffPolicy;
+use Keboola\Retry\Policy\RetryPolicyInterface;
+use Keboola\Retry\Policy\SimpleRetryPolicy;
+use Keboola\Retry\BackOff\BackOffPolicyInterface;
+use Keboola\Retry\BackOff\ExponentialBackOffPolicy;
 use Psr\Log\LoggerInterface;
 
 class RetryProxy implements RetryProxyInterface

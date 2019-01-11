@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Retry\BackOff;
+namespace Keboola\Retry\BackOff;
 
-use Retry\RetryContextInterface;
+use Keboola\Retry\RetryContextInterface;
 
 /**
  * Implementation of {@link BackOffPolicyInterface}

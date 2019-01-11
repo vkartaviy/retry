@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Retry\Test\Policy;
+namespace Keboola\Retry\Test\Policy;
 
 use PHPUnit\Framework\TestCase;
-use Retry\Policy\AlwaysRetryPolicy;
-use Retry\RetryContextInterface;
+use Keboola\Retry\Policy\AlwaysRetryPolicy;
+use Keboola\Retry\RetryContextInterface;
 
 class AlwaysRetryPolicyTest extends TestCase
 {
