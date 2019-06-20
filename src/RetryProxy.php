@@ -56,8 +56,10 @@ class RetryProxy implements RetryProxyInterface
     /**
      * Executing the action until it either succeeds or the policy dictates that we stop,
      * in which case the most recent exception thrown by the action will be rethrown.
+     * @return mixed
+     * @throws TerminatedRetryException
      */
-    public function call(callable $action, array $arguments = []): ?mixed
+    public function call(callable $action, array $arguments = [])
     {
         $retryContext   = $this->retryPolicy->open();
         $backOffContext = $this->backOffPolicy->start($retryContext);
