@@ -31,7 +31,7 @@ class SimpleRetryPolicy extends AbstractRetryPolicy
      *
      * @var array
      */
-    private $retryableExceptions = ['Exception'];
+    private $retryableExceptions = ['Exception', 'ErrorExceptions'];
 
     /**
      * @param int        $maxAttempts The number of attempts before a retry becomes impossible.
